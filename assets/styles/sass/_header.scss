@@ -1,0 +1,140 @@
+header.site-header {
+	transition: transform .5s ease;
+	
+	#top-bar-menu {
+		
+		li.logo {
+			@include breakpoint(medium) {
+
+			}
+			@include breakpoint(tablet) {
+
+			}
+			a {
+				padding: 0;
+			}			
+		}
+			
+		#main-nav {
+			align-items: center;
+			>li {
+				margin: 0 .3rem 0rem;
+				
+				> a {
+					font-size: rem-calc(21);
+					text-transform: uppercase;
+					letter-spacing: 2.1px;
+					padding: 1.78rem 0.5rem 1.78rem;
+					position: relative;
+					
+					@include breakpoint(tablet) {
+						font-size: rem-calc(14);
+						letter-spacing: 1.4px;
+					}
+					
+					span {
+						&:before {
+							content: '';
+							width: calc(100% - 1rem);
+							position: absolute;
+							top: 0;
+							height: 11px;
+							background-color: transparent;
+						}
+					}
+					
+				&:hover {
+
+				}
+					
+				}
+				
+			&.is-active,
+			&.current-menu-ancestor {
+				span:before {
+					background-color: $white;
+				}
+			}
+				
+			&.menu-item-has-children {
+				
+				ul.submenu {
+					li {
+						a {
+
+							
+						&:hover {
+
+						}
+							
+						}
+						
+					}
+				}
+	
+			}
+
+			}
+		}
+		
+		.menu-toggle-wrap {
+		    width: auto;
+		    flex: 0 0 auto;
+		    
+		    a#menu-toggle {
+			    padding: 0;
+			    width: 36px;
+			    height: 36px;
+			    position: relative;
+			    
+			    span {
+				    position: absolute;
+				    left: 0;
+				    right: 0;
+				    width: 36px;
+				    height: 4px;
+				    background-color: $white;
+					transition: all .3s ease;
+				    
+				    &:nth-child(1) {
+					    top: 4px;
+				    }
+
+				    &:nth-child(2) {
+					    top: 16px;
+				    }
+				    
+				    &:nth-child(3) {
+					    bottom: 4px;
+				    }
+				    				    
+			    }
+				
+			&.clicked {
+				span {
+					&:nth-child(1) {
+						top: 4px;
+						transform: translate(0px, 12px) rotate(-45deg);
+					}
+			
+					&:nth-child(2) {
+						top: 16px;
+						left: 50%;
+						right: 100%;
+						width: 0;
+					}
+					
+					&:nth-child(3) {
+						bottom: 4px;
+						transform: translate(0px, -12px) rotate(45deg);
+					}
+				}				
+			}
+			    
+		    }
+		    
+		}
+	
+	}
+	
+}

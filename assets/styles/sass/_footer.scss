@@ -1,0 +1,41 @@
+footer#colophon {
+
+	.site-info {
+
+	}
+	
+	.left {
+		.bottom {
+			@include breakpoint(medium down) {
+				padding-bottom: 4.1rem;
+			}
+		}
+	}
+		
+	ul#footer-links {
+		@include breakpoint(medium down) {
+			padding-bottom: 4.08rem;
+		}
+		li {
+			a {
+				font-size: rem-calc(14);
+				line-height: rem-calc(19);
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+		}
+	}
+	
+	.copyright {
+		margin-bottom: 0;
+		@include breakpoint(medium down) {
+			text-align: center;
+		}
+		@include breakpoint(tablet) {
+			br {
+				display: none;
+			}
+		}
+	}
+	
+}

@@ -1,0 +1,26 @@
+@mixin absolute-cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+$flush-margin: calc( (100vw - $global-width) * -.5 - 1rem);
+
+@mixin flush-right {
+	@media (min-width: $global-width) {
+		margin-right: $flush-margin;
+	}
+	@include breakpoint(xxlarge) {
+		margin-right: -8.25rem;
+	}
+}
+@mixin flush-left {
+	@media (min-width: $global-width) {
+		margin-left: $flush-margin;
+	}
+	@include breakpoint(xxlarge) {
+		margin-left: -8.25rem;
+	}
+}
