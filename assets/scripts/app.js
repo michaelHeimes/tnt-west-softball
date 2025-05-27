@@ -59,7 +59,7 @@
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.orbit.js
 
 // Modals
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.reveal.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.reveal.js
 
 // Form UI element
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.slider.js
@@ -80,7 +80,7 @@
 //@prepros-prepend vendor/what-input.js
 
 // Swiper
-//@*prepros-prepend vendor/swiper-bundle.js
+//@prepros-prepend vendor/swiper-bundle.js
 
 // DOM Ready
 (function($) {
@@ -144,37 +144,44 @@
     }
     
     _app.roster_slider = function() {
-        let rosterSlider = document.querySelector('.swiper.roster-slider');
-        if( rosterSlider.length < 1 ) return;
+        let rosterSliders = document.querySelectorAll('.swiper.roster-slider');
+        if(  rosterSliders.length < 1 ) return;       
         
-        $(rosterSlider).slideUp(0);
+        let rosterSliderWrapper = document.querySelectorAll('.roster-modal'); 
         
-        const swiper = new Swiper(rosterSlider, {
-            loop: false,
-            on: {
-                slideChange: function () {
-                    // Remove active from all
-                    document.querySelectorAll('.roster-nav a').forEach(el => el.classList.remove('active'));
-                    // Add active to current
-                    const activeIndex = this.realIndex;
-                    const activeItem = document.querySelector(`.roster-nav a[data-slide-index="${activeIndex}"]`);
-                    if (activeItem) activeItem.classList.add('active');
-                }
-            }
-        });
+        rosterSliderWrapper.forEach(function (wrapper) {
+            let rosterSlider = wrapper.querySelector('.swiper.roster-slider');
+            let nextBtn = wrapper.querySelector('.swiper-button-next');
+            let prevBtn = wrapper.querySelector('.swiper-button-prev');
             
-        // Menu click handler
-        document.querySelectorAll('.roster-nav a').forEach(li => {
-            li.addEventListener('click', e => {
-                e.preventDefault();
-                if( !rosterSlider.classList.contains('shown') ) {
-                    $(rosterSlider).slideDown(300);
-                    rosterSlider.classList.add('shown');
-                }
-                const index = parseInt(li.getAttribute('data-slide-index'), 10);
-                swiper.slideTo(index);
+            const swiper = new Swiper(rosterSlider, {
+                loop: true,
+                slidesPerView: 1,
+                spaceBetween: 30,
+                keyboard: {
+                    enabled: true,
+                },
+                navigation: {
+                    nextEl: nextBtn,
+                    prevEl: prevBtn,
+                },
             });
+            
+            // Menu click handler
+            const nav = document.querySelector('nav[data-nav=' + wrapper.id + ']')
+            nav.querySelectorAll('a').forEach(li => {
+                li.addEventListener('click', e => {
+                    e.preventDefault();
+                    const index = parseInt(li.getAttribute('data-slide-index'), 10);
+                    swiper.slideTo(index);
+                });
+            });
+            
         });
+        
+
+            
+
     }
             
     _app.init = function() {
@@ -187,7 +194,7 @@
         
         // Custom Functions
         //_app.mobile_takover_nav();
-        // _app.roster_slider();
+        _app.roster_slider();
     }
     
     

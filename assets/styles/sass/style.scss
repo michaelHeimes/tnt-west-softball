@@ -59,7 +59,7 @@ $mediumGutter: map-get($grid-margin-gutters, "medium");
 
 // Layout components
 @include foundation-off-canvas;
-// @include foundation-reveal;
+@include foundation-reveal;
 @include foundation-sticky;
 //@include foundation-title-bar;
 @include foundation-top-bar;
@@ -74,7 +74,7 @@ $mediumGutter: map-get($grid-margin-gutters, "medium");
 @import "vendor/motion-ui";
 
 // Import Swiper
-// @import "./css/vendor/swiper-bundle.min.css";
+@import "./css/vendor/swiper-bundle.min.css";
 
 /*--------------------------------------------------------------
 # Custom Styles

@@ -8,6 +8,14 @@
  * https://get.foundation
  * Licensed under MIT Open Source
  */
+@import "./css/vendor/swiper-bundle.min.css";
+@media print, screen and (min-width: 40em) {
+  .reveal.large, .reveal.small, .reveal.tiny, .reveal {
+    right: auto;
+    left: auto;
+    margin: 0 auto;
+  }
+}
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
@@ -5708,6 +5716,121 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
     display: none;
   }
 }
+html.is-reveal-open {
+  position: fixed;
+  width: 100%;
+  overflow-y: hidden;
+}
+html.is-reveal-open.zf-has-scroll {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+html.is-reveal-open body {
+  overflow-y: hidden;
+}
+
+.reveal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1005;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.65);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reveal {
+  z-index: 1006;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  display: none;
+  padding: 0;
+  border: 0px solid #800000;
+  border-radius: 0;
+  background-color: #fff;
+  position: relative;
+  top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+[data-whatinput=mouse] .reveal {
+  outline: 0;
+}
+@media print, screen and (min-width: 40em) {
+  .reveal {
+    min-height: 0;
+  }
+}
+.reveal .column {
+  min-width: 0;
+}
+.reveal > :last-child {
+  margin-bottom: 0;
+}
+@media print, screen and (min-width: 40em) {
+  .reveal {
+    width: 768px;
+    max-width: 75rem;
+  }
+}
+.reveal.collapse {
+  padding: 0;
+}
+@media print, screen and (min-width: 40em) {
+  .reveal.tiny {
+    width: 30%;
+    max-width: 75rem;
+  }
+}
+@media print, screen and (min-width: 40em) {
+  .reveal.small {
+    width: 50%;
+    max-width: 75rem;
+  }
+}
+@media print, screen and (min-width: 40em) {
+  .reveal.large {
+    width: 90%;
+    max-width: 75rem;
+  }
+}
+.reveal.full {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 100%;
+  margin-left: 0;
+  border: 0;
+  border-radius: 0;
+}
+@media print, screen and (max-width: 39.99875em) {
+  .reveal {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    min-height: 100%;
+    margin-left: 0;
+    border: 0;
+    border-radius: 0;
+  }
+}
+.reveal.without-overlay {
+  position: fixed;
+}
+
 .sticky-container {
   position: relative;
 }
@@ -8006,6 +8129,7 @@ footer#colophon .copyright {
   width: 20px;
   height: 20px;
   font-size: 16px;
+  line-height: 1;
   position: absolute;
   top: 0;
   left: -10px;
@@ -8020,5 +8144,45 @@ footer#colophon .copyright {
 .single-cpt-team .roster-content .roster-nav a hr {
   margin: 2px 0;
   border-color: #000;
+}
+
+.roster-modal .close-btn-wrap,
+.roster-modal .swiper-nav {
+  width: 100%;
+  background-color: #800000;
+  height: 60px;
+}
+.roster-modal .close-btn-wrap {
+  padding-right: 20px;
+}
+.roster-modal .swiper-button-next,
+.roster-modal .swiper-button-prev {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+.roster-modal .swiper-button-next:after,
+.roster-modal .swiper-button-prev:after {
+  content: "";
+}
+.roster-modal .swiper-slide {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.roster-modal .roster-bio .number {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 100%;
+  font-size: 1.5rem;
+  line-height: 1;
+  background-color: #800000;
+  color: #fff;
+  margin-right: 10px;
+}
+.roster-modal .roster-bio .h3 {
+  margin: 0;
 }
 /*# sourceMappingURL=style.min.css.map */
