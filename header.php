@@ -25,7 +25,7 @@
 			<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'trailhead' ); ?></a>
 		
 			<div class="sticky-container">
-				<header class="site-header" role="banner" data-sticky data-margin-top="0" data-sticky-on="small">
+				<header class="site-header relative" role="banner" data-sticky data-margin-top="0" data-sticky-on="small">
 					<?php get_template_part( 'template-parts/nav', 'offcanvas-topbar' ); ?>
 				</header><!-- #masthead -->
 			</div>

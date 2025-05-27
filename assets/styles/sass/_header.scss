@@ -1,9 +1,27 @@
 header.site-header {
+	background: get-color('primary');
 	transition: transform .5s ease;
 	
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 50vw;
+		background-color: $black;
+	}
+	
 	#top-bar-menu {
+		a {
+			font-family: $header-font-family;
+			font-size: rem-calc(22);
+			color: $white;
+		}
 		
 		li.logo {
+			max-width: 180px;
 			@include breakpoint(medium) {
 
 			}
@@ -21,27 +39,6 @@ header.site-header {
 				margin: 0 .3rem 0rem;
 				
 				> a {
-					font-size: rem-calc(21);
-					text-transform: uppercase;
-					letter-spacing: 2.1px;
-					padding: 1.78rem 0.5rem 1.78rem;
-					position: relative;
-					
-					@include breakpoint(tablet) {
-						font-size: rem-calc(14);
-						letter-spacing: 1.4px;
-					}
-					
-					span {
-						&:before {
-							content: '';
-							width: calc(100% - 1rem);
-							position: absolute;
-							top: 0;
-							height: 11px;
-							background-color: transparent;
-						}
-					}
 					
 				&:hover {
 
@@ -57,7 +54,9 @@ header.site-header {
 			}
 				
 			&.menu-item-has-children {
-				
+				> a:after {
+					border-color: $white transparent transparent;
+				}
 				ul.submenu {
 					li {
 						a {

@@ -29,18 +29,18 @@
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.abide.js
 
 // Tabs UI
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.tabs.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.tabs.js
 
 // Accordian
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.accordion.js
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.accordionMenu.js
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.responsiveAccordionTabs.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.accordion.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.accordionMenu.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.responsiveAccordionTabs.js
 
 // Menu enhancements
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.drilldown.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.drilldown.js
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.dropdown.js
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.dropdownMenu.js
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.responsiveMenu.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.dropdownMenu.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.responsiveMenu.js
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.responsiveToggle.js
 
 // Equalize heights
@@ -68,7 +68,7 @@
 //@prepros-prepend vendor/foundation/js/plugins/foundation.smoothScroll.js
 
 // Sticky Elements
-//@*prepros-prepend vendor/foundation/js/plugins/foundation.sticky.js
+//@prepros-prepend vendor/foundation/js/plugins/foundation.sticky.js
 
 // On/Off UI Switching
 //@*prepros-prepend vendor/foundation/js/plugins/foundation.toggler.js
@@ -80,7 +80,7 @@
 //@prepros-prepend vendor/what-input.js
 
 // Swiper
-//@prepros-prepend vendor/swiper-bundle.js
+//@*prepros-prepend vendor/swiper-bundle.js
 
 // DOM Ready
 (function($) {
@@ -142,6 +142,40 @@
             
         });
     }
+    
+    _app.roster_slider = function() {
+        let rosterSlider = document.querySelector('.swiper.roster-slider');
+        if( rosterSlider.length < 1 ) return;
+        
+        $(rosterSlider).slideUp(0);
+        
+        const swiper = new Swiper(rosterSlider, {
+            loop: false,
+            on: {
+                slideChange: function () {
+                    // Remove active from all
+                    document.querySelectorAll('.roster-nav a').forEach(el => el.classList.remove('active'));
+                    // Add active to current
+                    const activeIndex = this.realIndex;
+                    const activeItem = document.querySelector(`.roster-nav a[data-slide-index="${activeIndex}"]`);
+                    if (activeItem) activeItem.classList.add('active');
+                }
+            }
+        });
+            
+        // Menu click handler
+        document.querySelectorAll('.roster-nav a').forEach(li => {
+            li.addEventListener('click', e => {
+                e.preventDefault();
+                if( !rosterSlider.classList.contains('shown') ) {
+                    $(rosterSlider).slideDown(300);
+                    rosterSlider.classList.add('shown');
+                }
+                const index = parseInt(li.getAttribute('data-slide-index'), 10);
+                swiper.slideTo(index);
+            });
+        });
+    }
             
     _app.init = function() {
         
@@ -153,6 +187,7 @@
         
         // Custom Functions
         //_app.mobile_takover_nav();
+        // _app.roster_slider();
     }
     
     

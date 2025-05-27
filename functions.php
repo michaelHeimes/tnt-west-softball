@@ -175,7 +175,7 @@ add_action( 'wp_enqueue_scripts', 'trailhead_scripts' );
  */
 wp_enqueue_style(
 	 'pmi-google-fonts',
-	 'https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Roboto:ital@0;1&display=swap',
+	 'https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Work+Sans:ital@0;1&display=swap',
 	 array(),
 	 null
  );
@@ -196,6 +196,70 @@ wp_enqueue_style(
 
 // Disable Tabelpress Stylesheet
 add_filter( 'tablepress_use_default_css', '__return_false' );
+
+
+
+// for cpt-player admin, add team column and order by team then last-name
+// 1. Add a "Team" column to the admin screen
+add_filter('manage_cpt-player_posts_columns', function($columns) {
+	$columns['acf_team'] = 'Team';
+	return $columns;
+});
+
+// 2. Display the related team post title in the custom column
+add_action('manage_cpt-player_posts_custom_column', function($column, $post_id) {
+	if ($column === 'acf_team') {
+		$team_post = get_field('team', $post_id);
+		if ($team_post && is_object($team_post)) {
+			echo esc_html(get_the_title($team_post->ID));
+		}
+	}
+}, 10, 2);
+
+// 3. Make the column appear sortable (though sorting is custom below)
+add_filter('manage_edit-cpt-player_sortable_columns', function($columns) {
+	$columns['acf_team'] = 'acf_team';
+	return $columns;
+});
+
+// 4. Sort by team title (from relationship field), then by last-name
+add_action('pre_get_posts', function($query) {
+	if (
+		is_admin() &&
+		$query->is_main_query() &&
+		$query->get('post_type') === 'cpt-player'
+	) {
+		global $wpdb;
+
+		// Join to get the team post ID (meta_key = 'team')
+		$query->set('meta_key', 'team');
+		$query->set('orderby', [
+			'team_title_clause'     => 'ASC',
+			'last_name_clause'      => 'ASC',
+		]);
+
+		// Extend the query with JOINs and ORDER BY
+		add_filter('posts_clauses', function($clauses) use ($wpdb) {
+			$clauses['join'] .= "
+				LEFT JOIN {$wpdb->postmeta} AS team_meta
+					ON {$wpdb->posts}.ID = team_meta.post_id
+					AND team_meta.meta_key = 'team'
+				LEFT JOIN {$wpdb->posts} AS team_post
+					ON team_meta.meta_value = team_post.ID
+				LEFT JOIN {$wpdb->postmeta} AS last_name_meta
+					ON {$wpdb->posts}.ID = last_name_meta.post_id
+					AND last_name_meta.meta_key = 'last-name'
+			";
+			$clauses['orderby'] = "
+				team_post.post_title ASC,
+				last_name_meta.meta_value ASC
+			";
+			return $clauses;
+		});
+	}
+});
+
+
 
 
 /**

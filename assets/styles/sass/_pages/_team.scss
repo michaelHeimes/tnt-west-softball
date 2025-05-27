@@ -1,0 +1,55 @@
+.single-cpt-team {
+	.schedule-content {
+		overflow: auto;
+		table {
+			tbody > tr> td:nth-child(1) span {
+				white-space: nowrap;
+			}
+		}
+	}
+	.roster-content {
+		.roster-nav {
+			> .grid-x {
+				row-gap: $smallGutter	
+			}
+			a {
+				padding: 0;
+				font-family: $header-font-family;
+				font-weight: 700;
+				font-size: rem-calc(15);
+				line-height: 1;
+				flex-wrap: nowrap;
+				.img-wrap {
+					border: 3px solid $black;
+					border-radius: 100%;
+					margin-bottom: 4px;
+					position: relative;
+					flex: 0 0 75px;
+					img {
+						border-radius: 100%;
+						overflow: hidden;
+					}
+					.number {
+						width: 20px;
+						height: 20px;
+						font-size: 16px;
+						position: absolute;
+						top: 0;
+						left: -10px;
+						background-color: get-color('primary');
+						color: $white;
+					}
+				}
+				.text-wrap {
+					padding-top: 40px;
+					padding-left: 4px;
+					padding-bottom: 4px;
+				}
+				hr {
+					margin: 2px 0;
+					border-color: $black;
+				}
+			}
+		}
+	}
+}

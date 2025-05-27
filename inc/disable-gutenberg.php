@@ -12,14 +12,14 @@ function smartwp_remove_wp_block_library_css(){
 // add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );
 
 // Disable Gutenberg Post Type
-/*
+
 add_filter('use_block_editor_for_post_type', 'prefix_disable_gutenberg', 10, 2);
 function prefix_disable_gutenberg($current_status, $post_type)
 {
-    if ($post_type === 'page') return false;
+    if ($post_type === 'cpt-player' || $post_type === 'cpt-team' || $post_type === 'cpt-staff') return false;
     return $current_status;
 }
-*/
+
 
 /**
  * Templates and Page IDs without editor
