@@ -143,44 +143,68 @@
         });
     }
     
-    _app.roster_slider = function() {
+    _app.roster_sliders = function() {
         let rosterSliders = document.querySelectorAll('.swiper.roster-slider');
-        if(  rosterSliders.length < 1 ) return;       
+        if(  rosterSliders.length < 1 ) return;     
+        
+        document.body.classList.add('roster-swiper-init');  
         
         let rosterSliderWrapper = document.querySelectorAll('.roster-modal'); 
         
-        rosterSliderWrapper.forEach(function (wrapper) {
-            let rosterSlider = wrapper.querySelector('.swiper.roster-slider');
-            let nextBtn = wrapper.querySelector('.swiper-button-next');
-            let prevBtn = wrapper.querySelector('.swiper-button-prev');
-            
-            const swiper = new Swiper(rosterSlider, {
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 30,
-                keyboard: {
-                    enabled: true,
-                },
-                navigation: {
-                    nextEl: nextBtn,
-                    prevEl: prevBtn,
-                },
-            });
-            
-            // Menu click handler
-            const nav = document.querySelector('nav[data-nav=' + wrapper.id + ']')
-            nav.querySelectorAll('a').forEach(li => {
-                li.addEventListener('click', e => {
+        let swiperInstances = new Map();
+        let pendingSlideIndex = new Map(); // store index to slide to when modal opens
+        
+        // Bind nav link clicks on load
+        document.querySelectorAll('nav[data-nav]').forEach(nav => {
+            const modalId = nav.getAttribute('data-nav');
+            const modal = document.getElementById(modalId);
+        
+            nav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', e => {
                     e.preventDefault();
-                    const index = parseInt(li.getAttribute('data-slide-index'), 10);
-                    swiper.slideTo(index);
+                    const index = parseInt(link.getAttribute('data-slide-index'), 10);
+                    pendingSlideIndex.set(modalId, index); // store target index
+                    // new Foundation.Reveal($(modal)).open();   // open modal via JS API
                 });
             });
-            
         });
         
-
-            
+        // When modal opens, init Swiper (or re-init) and go to stored index
+        $(document).on('open.zf.reveal', '.roster-modal', function () {
+            const wrapper = this;
+            const modalId = wrapper.id;
+            const targetIndex = pendingSlideIndex.get(modalId) ?? 0;
+        
+            const rosterSlider = wrapper.querySelector('.swiper.roster-slider');
+            const nextBtn = wrapper.querySelector('.swiper-button-next');
+            const prevBtn = wrapper.querySelector('.swiper-button-prev');
+        
+            // Destroy old instance if needed
+            if (swiperInstances.has(modalId)) {
+                swiperInstances.get(modalId).destroy(true, true);
+            }
+        
+            // Use requestAnimationFrame to ensure layout is visible
+            requestAnimationFrame(() => {
+                const swiper = new Swiper(rosterSlider, {
+                    loop: true,
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    keyboard: {
+                        enabled: true,
+                    },
+                    navigation: {
+                        nextEl: nextBtn,
+                        prevEl: prevBtn,
+                    },
+                });
+        
+                swiperInstances.set(modalId, swiper);
+        
+                // Slide to index, using slideToLoop for correct loop behavior
+                swiper.slideToLoop(targetIndex);
+            });
+        });
 
     }
             
@@ -194,7 +218,7 @@
         
         // Custom Functions
         //_app.mobile_takover_nav();
-        _app.roster_slider();
+        _app.roster_sliders();
     }
     
     

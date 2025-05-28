@@ -28,7 +28,7 @@ function prefix_disable_gutenberg($current_status, $post_type)
 function ea_disable_editor( $id = false ) {
 
     $excluded_templates = array(
-        // 'page-templates/page-home.php',
+        'page-templates/page-teams.php',
     );
 
     $excluded_ids = array(
