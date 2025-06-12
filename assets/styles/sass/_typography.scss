@@ -1,3 +1,24 @@
+h1,
+.h1 {
+	font-size: clamp(3.063rem, 2.6rem + 1.972vw, 4.375rem);
+}
+h2,
+.h2 {
+	font-size: clamp(1.75rem, 1.486rem + 1.127vw, 2.5rem);
+}
+h3,
+.h3 {
+	font-size: clamp(1.356rem, 1.152rem + 0.873vw, 1.938rem);
+}
+h4,
+.h4 {
+	font-size: clamp(1.094rem, 0.929rem + 0.704vw, 1.563rem);
+}
+h5,
+.h5 {
+	font-size: clamp(1rem, 0.912rem + 0.376vw, 1.25rem);
+}
+
 .font-header {
 	font-family: $header-font-family;
 }

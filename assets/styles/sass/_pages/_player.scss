@@ -1,0 +1,12 @@
+.single-cpt-player {
+	.whole-team-link {
+		margin-bottom: clamp(1.4rem, 1.189rem + 0.901vw, 2rem);
+	}
+	.roster-bio .left .img-wrap {
+		padding: 0;
+		height: auto;
+		img {
+			position: static;
+		}
+	}
+}

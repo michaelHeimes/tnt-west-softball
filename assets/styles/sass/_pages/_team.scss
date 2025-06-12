@@ -1,5 +1,6 @@
 .page-template-page-teams,
-.single-cpt-team {
+.single-cpt-team,
+.single-cpt-player {
 	a.team-tab-link {
 		font-size: 1rem;
 		font-family: $header-font-family;
@@ -63,7 +64,9 @@
 		line-height: 0;
 	}
 	.schedule-content {
-		overflow: auto;
+		.table-wrap {
+			overflow: auto;
+		}
 		table {
 			tbody > tr> td:nth-child(1) span {
 				white-space: nowrap;
@@ -168,6 +171,9 @@
 			}
 		}
 	}
+	.roster-slider {
+		background-color: $white;
+	}
 	.swiper-button-next, 
 	.swiper-button-prev {
 		position: static;
@@ -180,111 +186,5 @@
 	}
 	.swiper-slide {
 		box-sizing: border-box;
-	}
-	.roster-bio {
-		padding-left: $smallGutter;
-		@include breakpoint(medium) {
-			padding-left: $mediumGutter;	
-		}
-		@include breakpoint(tablet) {
-			padding-left: 0;
-		}
-		// .mobile-img-wrap {
-		// 	@include breakpoint(tablet down) {
-		// 		max-width: 150px;
-		// 	}
-		// }
-		.left {
-			.img-wrap {
-				padding-top: 120%;
-				height: 100%;
-				img {
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					object-position: top;
-				}
-			}
-		}
-		.header {
-		}
-		.right {
-			padding-top: 40px;
-			padding-bottom: 40px;
-			hr {
-				border-width: 6px;
-				margin: 0.25rem 0 1.25rem;
-			}
-			.header,
-			.stats,
-			.content-wrap {
-				padding-right: $smallGutter;
-				@include breakpoint(medium) {
-					padding-right: $mediumGutter;	
-				}
-			}
-			.header {
-				@include breakpoint(tablet down) {
-					> .grid-x {
-						align-items: flex-end;
-						padding-bottom: 2rem;
-					}
-				}
-				.name-link {
-					margin-top: 1rem;
-					margin-bottom: 0.5rem;
-					h2 {
-						margin: 0;
-					}
-					.link-wrap {
-						padding-right: $smallGutter;
-						@include breakpoint(medium) {
-							padding-right: $mediumGutter;	
-						}
-						a {
-							&:hover,
-							&:focus {
-								svg path {
-									fill: $black;
-								}
-							}
-							@include breakpoint(medium down) {
-								svg {
-									max-width: 20px;
-								}
-							}
-						}
-					}
-				}
-			}
-			.number {
-				font-family: $header-font-family;
-				width: rem-calc(40);
-				height: rem-calc(40);
-				font-size: rem-calc(16);
-				border-radius: 100%;
-				line-height: 1;
-				background-color: get-color('primary');
-				color: $white;
-				margin-right: 10px;
-				@include breakpoint(medium) {
-					width: rem-calc(60);
-					height: rem-calc(60);
-					font-size: rem-calc(24);
-				}
-			}
-			.stats {
-				margin-bottom: .7rem;
-				> .p {
-					margin-bottom: .2rem;
-					> span:first-child {
-						font-weight: 600;
-					}
-				}
-			}
-		}
 	}
 }

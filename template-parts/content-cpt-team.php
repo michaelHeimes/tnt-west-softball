@@ -20,17 +20,12 @@ $staff = $fields['staff'] ?? null;
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
-		<div class="grid-x grid-padding-x">
-			<div class="cell shrink">
-				<h1>TNT West <?php the_title();?></h1>
-			</div>
+		<h1>TNT West <?php the_title();?>
 			<?php if( $coach_coaches ):?>
-				<div class="cell shrink h1">|</div>
-				<div class="cell auto h1">
-					<?=esc_html( $coach_coaches );?>
-				</div>
+				| <?=esc_html( $coach_coaches );?>
 			<?php endif;?>
-		</div>
+		</h1>
+
 		<div class="grid-x grid-padding-x">
 			<div class="cell small-12 tablet-10 large-8">
 				<?php the_content();?>
@@ -137,44 +132,47 @@ $staff = $fields['staff'] ?? null;
 						<a href="#schedule" class="accordion-title team-tab-link">Schedule</a>
 						<div id="schedule" class="schedule-content accordion-content" data-tab-content>
 							<?php if( have_rows('schedule') ): ?>
-								<table>
-									<?php if( $schedule_title ): ?>
-										<caption class="h2"><?= esc_html($schedule_title); ?></caption>
-									<?php endif; ?>
-							
-									<thead>
-										<tr>
-											<th>Date</th>
-											<th>Tournament</th>
-											<th>Location</th>
-										</tr>
-									</thead>
-							
-									<tbody>
-										<?php while( have_rows('schedule') ): the_row(); 
-											$start_date = get_sub_field('start_date');
-											$end_date = get_sub_field('end_date');
-											$tournament = get_sub_field('tournament');
-											$location = get_sub_field('location');
-										?>
+								<div class="tab-content-header text-center">
+									<h2><?= esc_html($schedule_title); ?></h2>
+								</div>
+								
+								<div class="table-wrap">
+									<table>
+								
+										<thead>
 											<tr>
-												<td>
-													<?php
-														if ( $start_date && $end_date && $start_date !== $end_date ) {
-															echo '<span>' . wp_kses_post( date('M j', strtotime($start_date)) . '–</span><span>' . date('M j', strtotime($end_date)) . '</span>');
-														} elseif ( $start_date ) {
-															echo '<span>' . wp_kses_post( date('M j', strtotime($start_date)) ) . '</span>';
-														} else {
-															echo '&mdash;';
-														}
-													?>
-												</td>
-												<td><?= esc_html($tournament ?: '—'); ?></td>
-												<td><?= esc_html($location ?: '—'); ?></td>
+												<th>Date</th>
+												<th>Tournament</th>
+												<th>Location</th>
 											</tr>
-										<?php endwhile; ?>
-									</tbody>
-								</table>
+										</thead>
+								
+										<tbody>
+											<?php while( have_rows('schedule') ): the_row(); 
+												$start_date = get_sub_field('start_date');
+												$end_date = get_sub_field('end_date');
+												$tournament = get_sub_field('tournament');
+												$location = get_sub_field('location');
+											?>
+												<tr>
+													<td>
+														<?php
+															if ( $start_date && $end_date && $start_date !== $end_date ) {
+																echo '<span>' . wp_kses_post( date('M j', strtotime($start_date)) . '–</span><span>' . date('M j', strtotime($end_date)) . '</span>');
+															} elseif ( $start_date ) {
+																echo '<span>' . wp_kses_post( date('M j', strtotime($start_date)) ) . '</span>';
+															} else {
+																echo '&mdash;';
+															}
+														?>
+													</td>
+													<td><?= esc_html($tournament ?: '—'); ?></td>
+													<td><?= esc_html($location ?: '—'); ?></td>
+												</tr>
+											<?php endwhile; ?>
+										</tbody>
+									</table>
+								</div>
 							<?php endif; ?>
 						</div>
 					</li>

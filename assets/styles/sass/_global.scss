@@ -40,8 +40,8 @@ button,
 POSTS & CONTENT STYLES
 *********************/
 article > .entry-header {
-	padding-top: 4rem;
-	padding-bottom: 3rem;
+	padding-top: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+	padding-bottom: clamp(2.1rem, 1.783rem + 1.352vw, 3rem);
 } 
 .page-title {
 	

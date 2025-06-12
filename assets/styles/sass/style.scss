@@ -1,3 +1,4 @@
+// Clamp Settings: 375-1440
 @charset "UTF-8";
 @import "variables";
 
@@ -53,8 +54,8 @@ $mediumGutter: map-get($grid-margin-gutters, "medium");
 // Menu-based containers
 @include foundation-menu;
 //@include foundation-menu-icon;
-// @include foundation-accordion-menu;
-@include foundation-drilldown-menu;
+@include foundation-accordion-menu;
+// @include foundation-drilldown-menu;
 @include foundation-dropdown-menu;
 
 // Layout components
@@ -85,9 +86,10 @@ $mediumGutter: map-get($grid-margin-gutters, "medium");
 @import "header";
 @import "footer";
 
-// @import "_parts/banner";
+@import "_parts/bio-content";
 
 // @import "_modules/page-modules";
 
 @import "_pages/home";
 @import "_pages/team";
+@import "_pages/player";

@@ -1,4 +1,6 @@
 <?php
+$post_id = get_the_ID();
+$post = get_post( $post_id );
 $link = get_permalink();
 $number = get_field('number') ?? null;
 $photo = get_field('photo') ?? null;
@@ -8,8 +10,19 @@ $date_of_birth = get_field('date_of_birth') ?? null;
 $high_school = get_field('high_school') ?? null;
 $graduation_year = get_field('graduation_year') ?? null;
 $height = get_field('height') ?? null;
+$team = get_field('team') ?? null;
+if($team) {
+	$team_url = get_permalink($team->ID);
+}
 ?>
 <div class="roster-bio h-100">
+	<?php if( is_singular( 'cpt-player' ) && $team ):?>
+		<div class="whole-team-link">
+			<a class="team-tab-link" href="<?=esc_url($team_url);?>/#roster">
+				View the complete <?=wp_kses_post($team->post_title);?> team roster
+			</a>
+		</div>
+	<?php endif;?>
 	<div class="grid-x grid-padding-x h-100">
 		<div class="left cell small-4 show-for-tablet">
 			<div class="img-wrap relative">
@@ -31,9 +44,9 @@ $height = get_field('height') ?? null;
 								echo '<img width="300" src="' . get_template_directory_uri() . '/assets/images/no-img-placeholder-300.jpg" alt="Fallback for missing image">';
 							};?>
 						</div>
-						<div class="small-7 medium-8 tablet-12">
+						<div class="cell small-7 medium-8 tablet-12">
 							<?php if($number || $position):?>
-								<div class="cell small-12 grid-x align-middle">
+								<div class="small-12 grid-x align-middle">
 									<?php if($number):?>
 										<div class="number grid-x align-middle align-center">
 											<b>#<?=esc_attr( $number );?></b>
@@ -51,15 +64,21 @@ $height = get_field('height') ?? null;
 							<div class="cell small-12">
 								<div class="name-link grid-x grid-padding-x">
 									<div class="cell auto">
-										<h2><?=esc_html( $name );?></h2>
+										<?php if( is_singular( 'cpt-player' ) ):?>
+											<h1 class="h2 m-0"><?=esc_html( $name );?></h2>
+										<?php else:?>
+											<h2><?=esc_html( $name );?></h2>
+										<?php endif;?>
 									</div>
-									<div class="shrink grid-x align-middle">
-										<div class="link-wrap">
-											<a href="<?=esc_url($link);?>" rel="bookmark" target="_blank">
-												<svg xmlns="http://www.w3.org/2000/svg" width="28" viewBox="0 0 512 512"><path d="M304 41c0 10.9 4.3 21.3 12 29l46.1 46L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l155-155 46.2 46.1c7.7 7.7 18.1 12 29 12 22.6 0 41-18.3 41-41V40c0-22.1-17.9-40-40-40H345c-22.6 0-41 18.3-41 41zm57.9 7H464v102.1L361.9 48zM72 32C32.2 32 0 64.2 0 104v336c0 39.8 32.2 72 72 72h336c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24v128c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24h128c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="#800000"/></svg>
-											</a>
+									<?php if( !is_singular( 'cpt-player' ) ):?>
+										<div class="shrink grid-x align-middle">
+											<div class="link-wrap">
+												<a href="<?=esc_url($link);?>" rel="bookmark" target="_blank">
+													<svg xmlns="http://www.w3.org/2000/svg" width="28" viewBox="0 0 512 512"><path d="M304 41c0 10.9 4.3 21.3 12 29l46.1 46L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l155-155 46.2 46.1c7.7 7.7 18.1 12 29 12 22.6 0 41-18.3 41-41V40c0-22.1-17.9-40-40-40H345c-22.6 0-41 18.3-41 41zm57.9 7H464v102.1L361.9 48zM72 32C32.2 32 0 64.2 0 104v336c0 39.8 32.2 72 72 72h336c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24v128c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24h128c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="#800000"/></svg>
+												</a>
+											</div>
 										</div>
-									</div>
+									<?php endif;?>
 								</div>
 							</div>
 						</div>
@@ -96,7 +115,7 @@ $height = get_field('height') ?? null;
 						<?php endif;?>
 					</div>
 					<div class="content-wrap">
-						<?php the_content();?>
+						<?php echo apply_filters( 'the_content', $post->post_content );?>
 					</div>
 				</div>
 			</div>

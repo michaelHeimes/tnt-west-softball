@@ -146,16 +146,16 @@ $header-font-weight: 700;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
-$header-lineheight: 1.25;
-$header-margin-bottom: 0.5rem;
+$header-lineheight: 1;
+$header-margin-bottom: 0.75rem;
 $header-styles: (
   small: (
-    'h1': ('font-size': 24),
-    'h2': ('font-size': 20),
-    'h3': ('font-size': 19),
-    'h4': ('font-size': 18),
-    'h5': ('font-size': 17),
-    'h6': ('font-size': 16),
+    'h1': ('font-size': 49),
+    'h2': ('font-size': 28),
+    'h3': ('font-size': 21.7),
+    'h4': ('font-size': 17.5),
+    'h5': ('font-size': 16),
+    'h6': ('font-size': 14),
   ),
   medium: (
     'h1': ('font-size': 70),
@@ -243,7 +243,7 @@ $accordion-plus-content: '\002B';
 $accordion-minus-content: '\2013';
 $accordion-title-font-size: rem-calc(12);
 $accordion-item-color: $primary-color;
-$accordion-item-background-hover: $light-gray;
+$accordion-item-background-hover: $white;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
 $accordion-content-border: 1px solid $light-gray;
@@ -525,10 +525,10 @@ $offcanvas-sizes: (
 $offcanvas-vertical-sizes: (
   small: 250px,
 );
-$offcanvas-background: $light-gray;
-$offcanvas-shadow: 0 0 10px rgba($black, 0.7);
+$offcanvas-background: $white;
+$offcanvas-shadow: 0 0 0 rgba($black, 0);
 $offcanvas-inner-shadow-size: 20px;
-$offcanvas-inner-shadow-color: rgba($black, 0.25);
+$offcanvas-inner-shadow-color: rgba($black, 0);
 $offcanvas-overlay-zindex: 11;
 $offcanvas-push-zindex: 12;
 $offcanvas-overlap-zindex: 13;
@@ -755,7 +755,7 @@ $responsive-embed-ratios: (
 // 47. Reveal
 // ----------
 
-$reveal-background: $white;
+$reveal-background: transparent;
 $reveal-width: 900px;
 $reveal-max-width: $global-width;
 $reveal-padding: 0;
@@ -832,7 +832,7 @@ $tab-item-padding: 1.25rem 1.5rem;
 $tab-content-background: $white;
 $tab-content-border: $light-gray;
 $tab-content-color: $body-font-color;
-$tab-content-padding: 1rem 2rem;
+$tab-content-padding: 1rem 2rem 1.75rem 2.4rem;
 
 // 52. Thumbnail
 // -------------
@@ -887,8 +887,8 @@ $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
-  "small": 20px,
-  "medium": 30px
+  "small": 32px,
+  "medium": 40px
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;

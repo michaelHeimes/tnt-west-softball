@@ -1,6 +1,7 @@
 header.site-header {
 	background: get-color('primary');
 	transition: transform .5s ease;
+	z-index: 55555;
 	
 	&:before {
 		content: '';
@@ -14,6 +15,12 @@ header.site-header {
 	}
 	
 	#top-bar-menu {
+		.top-bar-left,
+		.top-bar-right {
+			@include breakpoint(medium down) {
+				flex: 0 0 50%;
+			}
+		}
 		a {
 			font-family: $header-font-family;
 			font-size: rem-calc(22);
@@ -21,12 +28,13 @@ header.site-header {
 		}
 		
 		li.logo {
+			padding: 2px 4px 2px 0;
 			max-width: 180px;
 			@include breakpoint(medium) {
 
 			}
 			@include breakpoint(tablet) {
-
+				padding: 0;
 			}
 			a {
 				padding: 0;
@@ -136,4 +144,45 @@ header.site-header {
 	
 	}
 	
+}
+
+.off-canvas {
+	#offcanvas-nav {
+		padding: 1.2rem 0 1.4rem;
+		li {
+			a {
+				font-family: $header-font-family;
+				font-size: rem-calc(24);
+				margin: 0;
+				font-weight: 600;
+				color: get-color('primary');
+				padding: 0.7rem 1.4rem;
+			}
+			.submenu-toggle {
+				height: 50px;
+				width: 50px;
+				&:after {
+					border: 0;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path d="M239 401c9.4 9.4 24.6 9.4 33.9 0L465 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-175 175L81 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9L239 401z" fill="%23800000"/></svg>');
+					background-size: 20px;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+			}
+			.submenu {
+				li {
+					a {
+						font-size: rem-calc(24);
+						margin: 0;
+						padding-left: 2.75rem;
+					}
+				}
+			}
+		}
+	}
 }

@@ -188,6 +188,7 @@
             requestAnimationFrame(() => {
                 const swiper = new Swiper(rosterSlider, {
                     loop: true,
+                    autoHeight: true,
                     slidesPerView: 1,
                     spaceBetween: 30,
                     keyboard: {
