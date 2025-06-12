@@ -1,4 +1,67 @@
+.page-template-page-teams,
 .single-cpt-team {
+	a.team-tab-link {
+		font-size: 1rem;
+		font-family: $header-font-family;
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 4px;
+		transition: text-underline-offset .25s ease;
+		&:hover,
+		&:focus {
+			text-underline-offset: 2.5px;
+		}
+	}
+}
+.page-template-page-teams {
+	.team-cards {
+		row-gap: $smallGutter;
+		@include breakpoint(medium) {
+			row-gap: $mediumGutter;
+		}
+	}
+	.cpt-team {
+		a[rel="bookmark"] {
+			display: block;
+			background-color: $white;
+			transition: background-color .25s ease;
+			h2 {
+				padding: .2em .2em .1em;
+				transition: color .25s ease;
+			}
+			&:hover,
+			&:focus {
+				background-color: $black;
+				h2 {
+					color: $white;
+				}
+			}
+		}
+		.team-tab-nav {
+			background: get-color('primary');
+			padding-top: 2px;
+			padding-bottom: 2px;
+			a {
+				color: $white;
+				display: inline-block;
+				padding: .2em .2em .6em;
+			}
+		}
+	}	
+}
+
+.single-cpt-team {
+	.tabs {
+		display: inline-block;
+		border: 0;
+		li {
+			a {
+			}
+		}
+	}
+	.team-tabs-wapper {
+		line-height: 0;
+	}
 	.schedule-content {
 		overflow: auto;
 		table {
@@ -7,10 +70,21 @@
 			}
 		}
 	}
+	.tabs-panel {
+		scroll-padding-top: 550px;
+	}
+	.tab-content-header {
+		padding: 1rem;
+	}
 	.roster-content {
 		.roster-nav {
 			> .grid-x {
-				row-gap: $smallGutter	
+				row-gap: $smallGutter;
+			}
+			li {
+				@include breakpoint(medium) {
+					align-items: flex-end;
+				}
 			}
 			a {
 				padding: 0;
@@ -18,13 +92,21 @@
 				font-weight: 700;
 				font-size: rem-calc(15);
 				line-height: 1;
-				flex-wrap: nowrap;
+				flex-direction: column;
+				align-items: flex-start;
+				@include breakpoint(medium) {
+					flex-direction: row;
+					flex-wrap: nowrap;
+					align-items: flex-end;
+				} 
 				.img-wrap {
 					border: 3px solid $black;
 					border-radius: 100%;
 					margin-bottom: 4px;
 					position: relative;
 					flex: 0 0 75px;
+					width: 75px;
+					transition: border-color .25s ease;
 					img {
 						border-radius: 100%;
 						overflow: hidden;
@@ -42,19 +124,30 @@
 					}
 				}
 				.text-wrap {
-					padding-top: 40px;
-					padding-left: 4px;
-					padding-bottom: 4px;
+					@include breakpoint(medium) {
+						padding-top: 40px;
+						padding-left: 4px;
+						padding-bottom: 4px;
+					}
 				}
 				hr {
 					margin: 2px 0;
 					border-color: $black;
+				}
+				&:hover,
+				&:active {
+					.img-wrap {
+						border-color: get-color('primary');
+					}
 				}
 			}
 		}
 	}
 }
 .roster-modal {
+	svg path {
+		transition: .25s ease;
+	}
 	.close-btn-wrap,
 	.swiper-nav {
 		width: 100%;
@@ -62,7 +155,18 @@
 		height: 60px;
 	}
 	.close-btn-wrap {
-		padding-right: 20px;
+		padding-right: $smallGutter;
+		@include breakpoint(medium) {
+			padding-right: $mediumGutter;	
+		}
+		.close-button {
+			&:hover,
+			&:focus {
+				svg path {
+					fill: $black;
+				}
+			}
+		}
 	}
 	.swiper-button-next, 
 	.swiper-button-prev {
@@ -78,6 +182,18 @@
 		box-sizing: border-box;
 	}
 	.roster-bio {
+		padding-left: $smallGutter;
+		@include breakpoint(medium) {
+			padding-left: $mediumGutter;	
+		}
+		@include breakpoint(tablet) {
+			padding-left: 0;
+		}
+		// .mobile-img-wrap {
+		// 	@include breakpoint(tablet down) {
+		// 		max-width: 150px;
+		// 	}
+		// }
 		.left {
 			.img-wrap {
 				padding-top: 120%;
@@ -93,6 +209,8 @@
 				}
 			}
 		}
+		.header {
+		}
 		.right {
 			padding-top: 40px;
 			padding-bottom: 40px;
@@ -101,28 +219,71 @@
 				margin: 0.25rem 0 1.25rem;
 			}
 			.header,
-			.stats {
-				padding-right: 30px;
+			.stats,
+			.content-wrap {
+				padding-right: $smallGutter;
+				@include breakpoint(medium) {
+					padding-right: $mediumGutter;	
+				}
 			}
 			.header {
-				h2 {
+				@include breakpoint(tablet down) {
+					> .grid-x {
+						align-items: flex-end;
+						padding-bottom: 2rem;
+					}
+				}
+				.name-link {
 					margin-top: 1rem;
+					margin-bottom: 0.5rem;
+					h2 {
+						margin: 0;
+					}
+					.link-wrap {
+						padding-right: $smallGutter;
+						@include breakpoint(medium) {
+							padding-right: $mediumGutter;	
+						}
+						a {
+							&:hover,
+							&:focus {
+								svg path {
+									fill: $black;
+								}
+							}
+							@include breakpoint(medium down) {
+								svg {
+									max-width: 20px;
+								}
+							}
+						}
+					}
 				}
 			}
 			.number {
 				font-family: $header-font-family;
-				width: rem-calc(60);
-				height: rem-calc(60);
+				width: rem-calc(40);
+				height: rem-calc(40);
+				font-size: rem-calc(16);
 				border-radius: 100%;
-				font-size: rem-calc(24);
 				line-height: 1;
 				background-color: get-color('primary');
 				color: $white;
 				margin-right: 10px;
+				@include breakpoint(medium) {
+					width: rem-calc(60);
+					height: rem-calc(60);
+					font-size: rem-calc(24);
+				}
 			}
-			.h3,
-			.h5 {
-				margin: 0;
+			.stats {
+				margin-bottom: .7rem;
+				> .p {
+					margin-bottom: .2rem;
+					> span:first-child {
+						font-weight: 600;
+					}
+				}
 			}
 		}
 	}

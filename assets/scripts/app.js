@@ -207,6 +207,38 @@
         });
 
     }
+    
+    _app.scrollTo = function() {
+        window.trailhead_scroll_to = function (target, options, onCompleteEvent) {
+            if (target === undefined) {
+                return;
+            }
+        
+            if (options === undefined) {
+                options = {
+                    animationDuration: 500,
+                    animationEasing: 'swing', // Can be `'swing'` or `'linear'`
+                    threshold: 50,
+                    offset: 150
+                };
+            }
+        
+            // threshold is required for some reason
+            if (!options.hasOwnProperty('threshold')) {
+                options.threshold = 50;
+            }
+        
+        
+            Foundation.SmoothScroll.scrollToLoc(target, options);
+        }
+        
+        // scroll to hash on page load
+        if (window.location.hash) {
+            setTimeout(function () {
+                trailhead_scroll_to($(window.location.hash));
+            }, 400);
+        }
+    }
             
     _app.init = function() {
         
@@ -219,6 +251,7 @@
         // Custom Functions
         //_app.mobile_takover_nav();
         _app.roster_sliders();
+        _app.scrollTo();
     }
     
     

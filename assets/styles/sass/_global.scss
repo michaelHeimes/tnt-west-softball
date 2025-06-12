@@ -39,6 +39,10 @@ button,
 /*********************
 POSTS & CONTENT STYLES
 *********************/
+article > .entry-header {
+	padding-top: 4rem;
+	padding-bottom: 3rem;
+} 
 .page-title {
 	
 	// Remove Foundation vcard styling from author page titles

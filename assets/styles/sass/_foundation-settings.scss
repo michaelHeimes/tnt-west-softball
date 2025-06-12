@@ -66,7 +66,7 @@
 // ---------
 
 $global-font-size: 100%;
-$global-width: rem-calc(1200);
+$global-width: rem-calc(1440);
 $global-lineheight: 1.5;
 $foundation-palette: (
   "primary": #800000,
@@ -75,12 +75,12 @@ $foundation-palette: (
   "warning": #ffae00,
   "alert": #cc4b37,
 );
-$light-gray: #e6e6e6;
+$light-gray: #F9F9F9;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #000;
 $white: #fff;
-$body-background: $white;
+$body-background: $light-gray;
 $body-font-color: $black;
 $body-font-family: 'Work Sans', Helvetica, Roboto, Arial, sans-serif;
 $body-safe-padding: false;
@@ -123,7 +123,7 @@ $breakpoints-hidpi: (
   "hidpi-3": 3
 );
 $print-breakpoint: large;
-$breakpoint-classes: (small medium tablet large);
+$breakpoint-classes: (small medium tablet large xxlarge);
 
 // 3. The Grid
 // -----------
@@ -146,7 +146,7 @@ $header-font-weight: 700;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
-$header-lineheight: 1.4;
+$header-lineheight: 1.25;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
   small: (
@@ -158,7 +158,7 @@ $header-styles: (
     'h6': ('font-size': 16),
   ),
   medium: (
-    'h1': ('font-size': 48),
+    'h1': ('font-size': 70),
     'h2': ('font-size': 40),
     'h3': ('font-size': 31),
     'h4': ('font-size': 25),
@@ -824,15 +824,15 @@ $table-stack-breakpoint: medium;
 $tab-margin: 0;
 $tab-background: $white;
 $tab-color: $primary-color;
-$tab-background-active: $light-gray;
-$tab-active-color: $primary-color;
+$tab-background-active: $primary-color;
+$tab-active-color: $white;
 $tab-item-font-size: rem-calc(12);
 $tab-item-background-hover: $white;
 $tab-item-padding: 1.25rem 1.5rem;
 $tab-content-background: $white;
 $tab-content-border: $light-gray;
 $tab-content-color: $body-font-color;
-$tab-content-padding: 1rem;
+$tab-content-padding: 1rem 2rem;
 
 // 52. Thumbnail
 // -------------
