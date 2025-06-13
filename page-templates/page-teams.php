@@ -10,7 +10,6 @@
 get_header();
 $fields = get_fields();
 
-$teams = $fields['teams'];
 ?>
 	<div class="content">
 		<div class="inner-content">
@@ -27,14 +26,22 @@ $teams = $fields['teams'];
 				
 					<section class="entry-content" itemprop="text">
 						<?php the_content(); ?>
-						<?php if( $teams ):?>
+						<?php			
+						$args = array(  
+							'post_type' => 'cpt-team',
+							'post_status' => 'publish',
+							'posts_per_page' => -1,
+						);
+						
+						$loop = new WP_Query( $args ); 
+						
+						if ( $loop->have_posts() ) : ?>
 							<div class="grid-container">
 								<div class="team-cards grid-x grid-padding-x">
-									<?php foreach($teams as $post):
-										setup_postdata($post);
+									<?php while ( $loop->have_posts() ) : $loop->the_post();
 										$url = get_the_permalink();
 										$team_photo = get_field('team_photo') ?? null;
-										$name = get_the_title();
+										$name = get_the_title();	
 									?>
 										<article id="post-<?php the_ID(); ?>" <?php post_class('cell shrink medium-6 tablet-4'); ?>>
 											<a class="text-center" href="<?=$url ;?>" rel="bookmark">
@@ -61,10 +68,12 @@ $teams = $fields['teams'];
 												</ul>
 											</nav>
 										</article>
-									<?php endforeach; wp_reset_postdata();?>
+									<?php endwhile;?>
 								</div>
 							</div>
-						<?php endif;?>
+						<?php endif;
+						wp_reset_postdata(); 
+						?>
 					</section> <!-- end article section -->
 							
 					<footer class="article-footer">

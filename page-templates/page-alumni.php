@@ -30,8 +30,7 @@ $fields = get_fields();
 								</header><!-- .entry-header -->
 							
 								<section class="entry-content" itemprop="text">
-									<?php			
-									$args = array(  
+									<?php $args = array(  
 										'post_type' => 'cpt-alumnus',
 										'post_status' => 'publish',
 										'posts_per_page' => -1,
@@ -46,50 +45,46 @@ $fields = get_fields();
 									
 									if ( $loop->have_posts() ) : ?>
 										<nav class="alumni-nav" data-nav="player-modal">
-										<ul class="no-bullet post-grid grid-x grid-margin-x small-up-2 medium-up-4 tablet-up-5">
-											<?php while ( $loop->have_posts() ) : $loop->the_post();
-												$photo = get_field('photo') ?? null;
-												$position = get_field('position') ?? null;
-												$high_school = get_field('high_school') ?? null;
-												$college = get_field('college') ?? null;
-												$college_team_logo = get_field('college_team_logo') ?? null;
-												$url_for_college_profile = get_field('url_for_college_profile') ?? null;	
-											?>
-												<li class="cell">
-													<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-														<a class="grid-x" href="#" rel="bookmark" data-slide-index="<?= $index; ?>" data-open="player-modal">
+											<ul class="no-bullet post-grid grid-x grid-padding-x small-up-2 medium-up-4 tablet-up-5">
+												<?php while ( $loop->have_posts() ) : $loop->the_post();
+													$photo = get_field('photo') ?? null;
+													$position = get_field('position') ?? null;
+													$college = get_field('college') ?? null;
+													$college_team_logo = get_field('college_team_logo') ?? null;
+													$url_for_college_profile = get_field('url_for_college_profile') ?? null;	
+												?>
+													<li class="cell">
+														<article id="post-<?php the_ID(); ?>" <?php post_class('h-100'); ?>>
+															<a class="grid-x h-100" href="#" rel="bookmark" data-slide-index="<?= $index; ?>" data-open="player-modal">
+
+																<div class="photo-logo relative">
+																	<?php if($photo) {
+																		echo wp_get_attachment_image( $photo['id'], 'large', false, [ 'class' => 'img-fill' ] );
+																	} else {
+																		echo '<img width="75" src="' . get_template_directory_uri() . '/assets/images/no-img-placeholder-300.jpg" alt="Fallback for missing image">';
+																	};?>
+																	<?php if($college_team_logo):?>
+																		<div class="logo relative">
+																			<?=wp_get_attachment_image( $college_team_logo['id'], 'large' );?>
+																		</div>
+																	<?php endif;?>
+																</div>
+																
+																<h3 class="h4"><?php the_title();?></h3>	
+																<h4 class="h6">
+																	<?php if( $position ):?>
+																		<?=esc_html( $position );?> -
+																	<?php endif;?>
+																	<?php if( $college ):?>
+																		<?=esc_html( $college );?>
+																	<?php endif;?>
+																</h4>												
 															
-	
-															
-															<div class="photo-logo relative">
-																<?php if($photo) {
-																	echo wp_get_attachment_image( $photo['id'], 'large', false, [ 'class' => 'img-fill' ] );
-																} else {
-																	echo '<img width="75" src="' . get_template_directory_uri() . '/assets/images/no-img-placeholder-300.jpg" alt="Fallback for missing image">';
-																};?>
-																<?php if($college_team_logo):?>
-																	<div class="logo relative">
-																		<?=wp_get_attachment_image( $college_team_logo['id'], 'large' );?>
-																	</div>
-																<?php endif;?>
-															</div>
-															
-															<h3 class="h4"><?php the_title();?></h3>	
-															<h4 class="h6">
-																<?php if( $position ):?>
-																	<?=esc_html( $position );?> -
-																<?php endif;?>
-																<?php if( $college ):?>
-																	<?=esc_html( $college );?>
-																<?php endif;?>
-															</h4>												
-														
-														</a>
-	
-													</article>
-												</li>
-											<?php $index++; endwhile;?>
-										</ul>
+															</a>
+														</article>
+													</li>
+												<?php $index++; endwhile;?>
+											</ul>
 										</nav>									
 									
 										<?php if ( $loop->have_posts() ) : ?>

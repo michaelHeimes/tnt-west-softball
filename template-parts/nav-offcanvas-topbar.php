@@ -34,8 +34,9 @@
 			<?php if( !empty( $logo ) ) :?>
 				<ul class="menu">
 					<li class="logo">
-						<a href="<?php echo home_url(); ?>">
+						<a href="<?php echo home_url(); ?>" rel="home">
 							<?= wp_get_attachment_image( $logo['id'], 'full' );?>
+							<span class="show-for-sr"><?php bloginfo( 'name' ); ?></span>
 						</a>
 					</li>
 				</ul>

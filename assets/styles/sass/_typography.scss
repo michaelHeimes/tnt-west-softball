@@ -18,6 +18,12 @@ h5,
 .h5 {
 	font-size: clamp(1rem, 0.912rem + 0.376vw, 1.25rem);
 }
+.p-2,
+.p-2 p,
+.p-2 ul,
+.p-2 ol {
+	font-size: clamp(1.125rem, 1.081rem + 0.188vw, 1.25rem);
+}
 
 .font-header {
 	font-family: $header-font-family;

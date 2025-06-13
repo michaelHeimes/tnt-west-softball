@@ -1,3 +1,26 @@
 .page-template-page-home {
-	
+	.entry-header {
+		background-color: $white;
+		padding-top: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+		margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+		.left-svg {
+			svg {
+				padding: 1vw;
+			}
+		}
+		hr {
+			border-color: get-color('primary');
+			max-width: 200px;
+			margin: 1.25rem auto 1.5rem;
+			border-width: 4px;
+		}
+	}
+	.entry-content {
+		.intro {
+			margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+		}
+	}	
+	.teams {
+		
+	}
 }

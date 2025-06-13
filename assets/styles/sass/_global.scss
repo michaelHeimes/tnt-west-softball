@@ -36,13 +36,35 @@ button,
 	cursor: pointer;
 }
 
+a.team-tab-link {
+	font-size: 1rem;
+	font-family: $header-font-family;
+	font-weight: 700;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	transition: text-underline-offset .25s ease;
+	&:hover,
+	&:focus {
+		text-underline-offset: 2.5px;
+	}
+}
+
 /*********************
 POSTS & CONTENT STYLES
 *********************/
-article > .entry-header {
+body:not(.page-template-page-home) .site-main {
 	padding-top: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+	padding-bottom: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+}
+article > .entry-header {
 	padding-bottom: clamp(2.1rem, 1.783rem + 1.352vw, 3rem);
 } 
+@include breakpoint(medium) {
+	.reveal.large {
+		width: 90%;
+		max-width: 84rem;
+	}
+}
 .page-title {
 	
 	// Remove Foundation vcard styling from author page titles

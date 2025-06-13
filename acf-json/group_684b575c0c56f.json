@@ -50,6 +50,29 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_684c68262da30",
+            "label": "Number",
+            "name": "number",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_684b575c17441",
             "label": "Position",
             "name": "position",
@@ -200,5 +223,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1749815845
+    "modified": 1749837873
 }

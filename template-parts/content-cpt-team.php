@@ -22,7 +22,7 @@ $staff = $fields['staff'] ?? null;
 	<header class="entry-header">
 		<h1>TNT West <?php the_title();?>
 			<?php if( $coach_coaches ):?>
-				| <?=esc_html( $coach_coaches );?>
+				- <?=esc_html( $coach_coaches );?>
 			<?php endif;?>
 		</h1>
 
@@ -197,7 +197,7 @@ $staff = $fields['staff'] ?? null;
 									?>
 
 										<li class="cell shrink xxlarge-2 grid-x">
-											<a class="grid-x" href="#" rel="bookmark" data-slide-index="<?= $index; ?>" data-open="player-modal">
+											<a class="grid-x" href="#" rel="bookmark" data-slide-index="<?= $index; ?>" data-open="staff-modal">
 												<div class="img-wrap">
 													<?php if($photo) {
 														echo wp_get_attachment_image( $photo['id'], 'thumbnail' );

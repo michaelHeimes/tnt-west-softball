@@ -11,6 +11,12 @@ $high_school = get_field('high_school') ?? null;
 $graduation_year = get_field('graduation_year') ?? null;
 $height = get_field('height') ?? null;
 $team = get_field('team') ?? null;
+
+// alumnus fields
+$college = get_field('college') ?? null;
+$college_team_logo = get_field('college_team_logo') ?? null;
+$url_for_college_profile = get_field('url_for_college_profile') ?? null;	
+
 if($team) {
 	$team_url = get_permalink($team->ID);
 }
@@ -29,7 +35,7 @@ if($team) {
 				<?php if($photo) {
 					echo wp_get_attachment_image( $photo['id'], 'medium' );
 				} else {
-					echo '<img width="300" src="' . get_template_directory_uri() . '/assets/images/no-img-placeholder-300.jpg" alt="Fallback for missing image">';
+					echo '<img width="1024" src="' . get_template_directory_uri() . '/assets/images/missing-img-fallback-1024-compressed.jpg" alt="Fallback for missing image">';
 				};?>
 			</div>
 		</div>
@@ -41,7 +47,7 @@ if($team) {
 							<?php if($photo) {
 								echo wp_get_attachment_image( $photo['id'], 'medium' );
 							} else {
-								echo '<img width="300" src="' . get_template_directory_uri() . '/assets/images/no-img-placeholder-300.jpg" alt="Fallback for missing image">';
+								echo '<img width="1024" src="' . get_template_directory_uri() . '/assets/images/missing-img-fallback-1024-compressed.jpg" alt="Fallback for missing image">';
 							};?>
 						</div>
 						<div class="cell small-7 medium-8 tablet-12">
@@ -52,10 +58,22 @@ if($team) {
 											<b>#<?=esc_attr( $number );?></b>
 										</div>
 									<?php endif;?>
-									<?php if( $position  ):?>
+									<?php if( $position || $college || $college_team_logo ):?>
 										<div class="h3 m-0">
 											<div class="position"> 
-												<?=esc_html($position );?>
+												<?php if( $position || $college ):?>
+													<span class="position-college">
+														<?=esc_html($position );?>
+														<?php if( is_page_template('page-templates/page-alumni.php') && $college ):?>
+															- <?=esc_html($college);?>
+														<?php endif;?>
+													</span>
+												<?php endif;?>
+												<?php if( is_page_template('page-templates/page-alumni.php') && $college_team_logo):?>
+													<span class="logo">
+														<?=wp_get_attachment_image( $college_team_logo['id'], 'large' );?>
+													</span>
+												<?php endif;?>
 											</div>
 										</div>
 									<?php endif;?>
@@ -73,7 +91,7 @@ if($team) {
 									<?php if( !is_singular( 'cpt-player' ) ):?>
 										<div class="shrink grid-x align-middle">
 											<div class="link-wrap">
-												<a href="<?=esc_url($link);?>" rel="bookmark" target="_blank">
+												<a href="<?=esc_url($link);?>" rel="bookmark"<?php if( is_page_template('page-templates/page-alumni.php') ):?> target="_blank"<?php endif;?>>
 													<svg xmlns="http://www.w3.org/2000/svg" width="28" viewBox="0 0 512 512"><path d="M304 41c0 10.9 4.3 21.3 12 29l46.1 46L207 271c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l155-155 46.2 46.1c7.7 7.7 18.1 12 29 12 22.6 0 41-18.3 41-41V40c0-22.1-17.9-40-40-40H345c-22.6 0-41 18.3-41 41zm57.9 7H464v102.1L361.9 48zM72 32C32.2 32 0 64.2 0 104v336c0 39.8 32.2 72 72 72h336c39.8 0 72-32.2 72-72V312c0-13.3-10.7-24-24-24s-24 10.7-24 24v128c0 13.3-10.7 24-24 24H72c-13.3 0-24-10.7-24-24V104c0-13.3 10.7-24 24-24h128c13.3 0 24-10.7 24-24s-10.7-24-24-24H72z" fill="#800000"/></svg>
 												</a>
 											</div>

@@ -1,19 +1,4 @@
-.page-template-page-teams,
-.single-cpt-team,
-.single-cpt-player {
-	a.team-tab-link {
-		font-size: 1rem;
-		font-family: $header-font-family;
-		font-weight: 700;
-		text-decoration: underline;
-		text-underline-offset: 4px;
-		transition: text-underline-offset .25s ease;
-		&:hover,
-		&:focus {
-			text-underline-offset: 2.5px;
-		}
-	}
-}
+.page-template-page-home,
 .page-template-page-teams {
 	.team-cards {
 		row-gap: $smallGutter;

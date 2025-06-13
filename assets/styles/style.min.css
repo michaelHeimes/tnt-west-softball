@@ -6027,7 +6027,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   z-index: 1;
   display: none;
   min-width: 200px;
-  border: 1px solid #cacaca;
+  border: 1px solid #800000;
   background: #fff;
 }
 .dropdown .is-dropdown-submenu a {
@@ -8644,14 +8644,37 @@ button,
   cursor: pointer;
 }
 
+a.team-tab-link {
+  font-size: 1rem;
+  font-family: "Rajdhani", Helvetica, Roboto, Arial, sans-serif;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  -webkit-transition: text-underline-offset 0.25s ease;
+  transition: text-underline-offset 0.25s ease;
+}
+a.team-tab-link:hover, a.team-tab-link:focus {
+  text-underline-offset: 2.5px;
+}
+
 /*********************
 POSTS & CONTENT STYLES
 *********************/
-article > .entry-header {
+body:not(.page-template-page-home) .site-main {
   padding-top: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+  padding-bottom: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+}
+
+article > .entry-header {
   padding-bottom: clamp(2.1rem, 1.783rem + 1.352vw, 3rem);
 }
 
+@media print, screen and (min-width: 40em) {
+  .reveal.large {
+    width: 90%;
+    max-width: 84rem;
+  }
+}
 .page-title .vcard {
   border: 0px;
   padding: 0px;
@@ -9152,6 +9175,13 @@ h5,
   font-size: clamp(1rem, 0.912rem + 0.376vw, 1.25rem);
 }
 
+.p-2,
+.p-2 p,
+.p-2 ul,
+.p-2 ol {
+  font-size: clamp(1.125rem, 1.081rem + 0.188vw, 1.25rem);
+}
+
 .font-header {
   font-family: "Rajdhani", Helvetica, Roboto, Arial, sans-serif;
 }
@@ -9204,14 +9234,34 @@ header.site-header #top-bar-menu #main-nav {
       -ms-flex-align: center;
           align-items: center;
 }
+header.site-header #top-bar-menu #main-nav a {
+  display: inline-block;
+}
+header.site-header #top-bar-menu #main-nav a:hover, header.site-header #top-bar-menu #main-nav a:focus {
+  text-decoration: underline;
+}
 header.site-header #top-bar-menu #main-nav > li {
   margin: 0 0.3rem 0rem;
 }
 header.site-header #top-bar-menu #main-nav > li.is-active span:before, header.site-header #top-bar-menu #main-nav > li.current-menu-ancestor span:before {
   background-color: #fff;
 }
+header.site-header #top-bar-menu #main-nav > li.menu-item-has-children > a {
+  position: relative;
+}
 header.site-header #top-bar-menu #main-nav > li.menu-item-has-children > a:after {
-  border-color: #fff transparent transparent;
+  border: 0;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Pro 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2025 Fonticons, Inc.--><path d="M239 401c9.4 9.4 24.6 9.4 33.9 0L465 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-175 175L81 175c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9L239 401z" fill="%23ffffff"/></svg>');
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 header.site-header #top-bar-menu .menu-toggle-wrap {
   width: auto;
@@ -9436,55 +9486,63 @@ footer#colophon .copyright {
   font-weight: 600;
 }
 
-.page-template-page-teams a.team-tab-link,
-.single-cpt-team a.team-tab-link,
-.single-cpt-player a.team-tab-link {
-  font-size: 1rem;
-  font-family: "Rajdhani", Helvetica, Roboto, Arial, sans-serif;
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  -webkit-transition: text-underline-offset 0.25s ease;
-  transition: text-underline-offset 0.25s ease;
+.page-template-page-home .entry-header {
+  background-color: #fff;
+  padding-top: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+  margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
 }
-.page-template-page-teams a.team-tab-link:hover, .page-template-page-teams a.team-tab-link:focus,
-.single-cpt-team a.team-tab-link:hover,
-.single-cpt-team a.team-tab-link:focus,
-.single-cpt-player a.team-tab-link:hover,
-.single-cpt-player a.team-tab-link:focus {
-  text-underline-offset: 2.5px;
+.page-template-page-home .entry-header .left-svg svg {
+  padding: 1vw;
 }
-
+.page-template-page-home .entry-header hr {
+  border-color: #800000;
+  max-width: 200px;
+  margin: 1.25rem auto 1.5rem;
+  border-width: 4px;
+}
+.page-template-page-home .entry-content .intro {
+  margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+}
+.page-template-page-home .team-cards,
 .page-template-page-teams .team-cards {
   row-gap: 32px;
 }
 @media print, screen and (min-width: 40em) {
+  .page-template-page-home .team-cards,
   .page-template-page-teams .team-cards {
     row-gap: 40px;
   }
 }
+.page-template-page-home .cpt-team a[rel=bookmark],
 .page-template-page-teams .cpt-team a[rel=bookmark] {
   display: block;
   background-color: #fff;
   -webkit-transition: background-color 0.25s ease;
   transition: background-color 0.25s ease;
 }
+.page-template-page-home .cpt-team a[rel=bookmark] h2,
 .page-template-page-teams .cpt-team a[rel=bookmark] h2 {
   padding: 0.2em 0.2em 0.1em;
   -webkit-transition: color 0.25s ease;
   transition: color 0.25s ease;
 }
-.page-template-page-teams .cpt-team a[rel=bookmark]:hover, .page-template-page-teams .cpt-team a[rel=bookmark]:focus {
+.page-template-page-home .cpt-team a[rel=bookmark]:hover, .page-template-page-home .cpt-team a[rel=bookmark]:focus,
+.page-template-page-teams .cpt-team a[rel=bookmark]:hover,
+.page-template-page-teams .cpt-team a[rel=bookmark]:focus {
   background-color: #000;
 }
-.page-template-page-teams .cpt-team a[rel=bookmark]:hover h2, .page-template-page-teams .cpt-team a[rel=bookmark]:focus h2 {
+.page-template-page-home .cpt-team a[rel=bookmark]:hover h2, .page-template-page-home .cpt-team a[rel=bookmark]:focus h2,
+.page-template-page-teams .cpt-team a[rel=bookmark]:hover h2,
+.page-template-page-teams .cpt-team a[rel=bookmark]:focus h2 {
   color: #fff;
 }
+.page-template-page-home .cpt-team .team-tab-nav,
 .page-template-page-teams .cpt-team .team-tab-nav {
   background: #800000;
   padding-top: 2px;
   padding-bottom: 2px;
 }
+.page-template-page-home .cpt-team .team-tab-nav a,
 .page-template-page-teams .cpt-team .team-tab-nav a {
   color: #fff;
   display: inline-block;
@@ -9653,37 +9711,41 @@ footer#colophon .copyright {
   position: static;
 }
 
-.page-template-page-alumni .cpt-alumnus {
+.page-template-page-alumni .post-grid > li {
   margin-bottom: 32px;
 }
 @media print, screen and (min-width: 40em) {
-  .page-template-page-alumni .cpt-alumnus {
+  .page-template-page-alumni .post-grid > li {
     margin-bottom: 40px;
   }
 }
-.page-template-page-alumni .cpt-alumnus a {
+.page-template-page-alumni .post-grid > li a {
+  display: block;
+  background-color: #fff;
+  padding: 8px;
   -webkit-transition: color 0.25s ease;
   transition: color 0.25s ease;
 }
-.page-template-page-alumni .cpt-alumnus a:hover, .page-template-page-alumni .cpt-alumnus a:focus {
+.page-template-page-alumni .post-grid > li a:hover, .page-template-page-alumni .post-grid > li a:focus {
   color: #000;
 }
-.page-template-page-alumni .cpt-alumnus .photo-logo {
+.page-template-page-alumni .post-grid > li .photo-logo {
   width: 100%;
   padding-top: 140%;
+  margin-bottom: 1rem;
 }
-.page-template-page-alumni .cpt-alumnus .photo-logo img.img-fill {
+.page-template-page-alumni .post-grid > li .photo-logo img.img-fill {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% + 1px);
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
 }
-.page-template-page-alumni .cpt-alumnus .photo-logo .logo {
+.page-template-page-alumni .post-grid > li .photo-logo .logo {
   width: 30%;
   padding-top: 30%;
   position: absolute;
@@ -9692,8 +9754,8 @@ footer#colophon .copyright {
   background: #fff;
   border-radius: 100%;
 }
-.page-template-page-alumni .cpt-alumnus .photo-logo .logo img,
-.page-template-page-alumni .cpt-alumnus .photo-logo .logo svg {
+.page-template-page-alumni .post-grid > li .photo-logo .logo img,
+.page-template-page-alumni .post-grid > li .photo-logo .logo svg {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -9703,5 +9765,18 @@ footer#colophon .copyright {
      object-fit: contain;
   -o-object-position: center;
      object-position: center;
+}
+
+.reveal.roster-modal .position-college {
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+.reveal.roster-modal .logo {
+  display: inline-block;
+  width: 100%;
+  max-width: 90px;
+}
+.reveal.roster-modal .logo img {
+  max-height: 57px;
 }
 /*# sourceMappingURL=style.min.css.map */
