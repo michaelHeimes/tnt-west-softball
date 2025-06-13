@@ -8,7 +8,7 @@
  */
 
 get_header();
-$fields = get_fields();
+
 ?>
 	<div class="content">
 		<div class="inner-content">
@@ -33,10 +33,7 @@ $fields = get_fields();
 									<?php $args = array(  
 										'post_type' => 'cpt-alumnus',
 										'post_status' => 'publish',
-										'posts_per_page' => -1,
-										'meta_key'       => 'last_name',
-										'orderby'        => 'meta_value',
-										'order'          => 'ASC',
+										'posts_per_page' => 5,
 									);
 									
 									$loop = new WP_Query( $args ); 
@@ -45,7 +42,7 @@ $fields = get_fields();
 									
 									if ( $loop->have_posts() ) : ?>
 										<nav class="alumni-nav" data-nav="player-modal">
-											<ul class="no-bullet post-grid grid-x grid-padding-x small-up-2 medium-up-4 tablet-up-5">
+											<ul class="no-bullet post-grid small-gutter-grid grid-x grid-padding-x small-up-2 medium-up-4 tablet-up-5">
 												<?php while ( $loop->have_posts() ) : $loop->the_post();
 													$photo = get_field('photo') ?? null;
 													$position = get_field('position') ?? null;

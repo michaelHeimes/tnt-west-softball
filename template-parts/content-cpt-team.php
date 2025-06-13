@@ -64,7 +64,7 @@ $staff = $fields['staff'] ?? null;
 									?>
 										<li class="cell shrink xxlarge-2 grid-x">
 											<a class="grid-x" href="#" rel="bookmark" data-slide-index="<?= $index; ?>" data-open="player-modal">
-												<div class="img-wrap">
+												<div class="img-wrap img-wrap-circle">
 													<?php if($photo) {
 														echo wp_get_attachment_image( $photo['id'], 'thumbnail' );
 													} else {
@@ -198,7 +198,7 @@ $staff = $fields['staff'] ?? null;
 
 										<li class="cell shrink xxlarge-2 grid-x">
 											<a class="grid-x" href="#" rel="bookmark" data-slide-index="<?= $index; ?>" data-open="staff-modal">
-												<div class="img-wrap">
+												<div class="img-wrap img-wrap-circle">
 													<?php if($photo) {
 														echo wp_get_attachment_image( $photo['id'], 'thumbnail' );
 													} else {

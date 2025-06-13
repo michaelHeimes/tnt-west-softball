@@ -49,6 +49,46 @@ a.team-tab-link {
 	}
 }
 
+.small-gutter-grid.grid-x {
+	margin-right: -.5rem;
+	margin-left: -.5rem;
+	@include breakpoint(medium) {
+		margin-right: -.5rem;
+		margin-left: -.5rem;
+	}
+	> .cell {
+		padding-right: .5rem;
+		padding-left: .5rem;
+		margin-bottom: 1rem;
+		@include breakpoint(medium) {
+			padding-right: .5rem;
+			padding-left: .5rem;
+		}
+	}
+}
+
+.img-wrap-circle {
+	border: 3px solid $black;
+	border-radius: 100%;
+	margin-bottom: 4px;
+	position: relative;
+	flex: 0 0 75px;
+	width: 75px;
+	padding-top: 69px;
+	transition: border-color .25s ease;
+	img {
+		border-radius: 100%;
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+}
+
 /*********************
 POSTS & CONTENT STYLES
 *********************/

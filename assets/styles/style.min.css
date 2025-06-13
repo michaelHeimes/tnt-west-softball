@@ -4741,8 +4741,9 @@ ul.no-bullet, ol.no-bullet {
   border-radius: 0;
   -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
-  font-family: inherit;
-  font-size: 0.9rem;
+  font-family: "Rajdhani", Helvetica, Roboto, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
   -webkit-appearance: none;
   line-height: 1;
   text-align: center;
@@ -4771,7 +4772,7 @@ ul.no-bullet, ol.no-bullet {
   color: #fff;
 }
 .button:hover, .button:focus {
-  background-color: #6d0000;
+  background-color: #000;
   color: #fff;
 }
 .button.primary, .button.primary.disabled, .button.primary[disabled], .button.primary.disabled:hover, .button.primary[disabled]:hover, .button.primary.disabled:focus, .button.primary[disabled]:focus {
@@ -8657,6 +8658,55 @@ a.team-tab-link:hover, a.team-tab-link:focus {
   text-underline-offset: 2.5px;
 }
 
+.small-gutter-grid.grid-x {
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+@media print, screen and (min-width: 40em) {
+  .small-gutter-grid.grid-x {
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+  }
+}
+.small-gutter-grid.grid-x > .cell {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+@media print, screen and (min-width: 40em) {
+  .small-gutter-grid.grid-x > .cell {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+}
+
+.img-wrap-circle {
+  border: 3px solid #000;
+  border-radius: 100%;
+  margin-bottom: 4px;
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 75px;
+          flex: 0 0 75px;
+  width: 75px;
+  padding-top: 69px;
+  -webkit-transition: border-color 0.25s ease;
+  transition: border-color 0.25s ease;
+}
+.img-wrap-circle img {
+  border-radius: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+
 /*********************
 POSTS & CONTENT STYLES
 *********************/
@@ -8739,8 +8789,9 @@ article > .entry-header {
   border-radius: 0;
   -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
   transition: background-color 0.25s ease-out, color 0.25s ease-out;
-  font-family: inherit;
-  font-size: 0.9rem;
+  font-family: "Rajdhani", Helvetica, Roboto, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
   -webkit-appearance: none;
   line-height: 1;
   text-align: center;
@@ -8754,7 +8805,7 @@ article > .entry-header {
   color: #fff;
 }
 .post-password-form input[type=submit]:hover, .post-password-form input[type=submit]:focus {
-  background-color: #6d0000;
+  background-color: #000;
   color: #fff;
 }
 
@@ -9180,6 +9231,7 @@ h5,
 .p-2 ul,
 .p-2 ol {
   font-size: clamp(1.125rem, 1.081rem + 0.188vw, 1.25rem);
+  font-weight: 500;
 }
 
 .font-header {
@@ -9489,7 +9541,6 @@ footer#colophon .copyright {
 .page-template-page-home .entry-header {
   background-color: #fff;
   padding-top: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
-  margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
 }
 .page-template-page-home .entry-header .left-svg svg {
   padding: 1vw;
@@ -9500,9 +9551,24 @@ footer#colophon .copyright {
   margin: 1.25rem auto 1.5rem;
   border-width: 4px;
 }
+.page-template-page-home .divider {
+  background: #fff;
+  width: 100%;
+  height: 28px;
+  border-top: 10px solid #800000;
+  border-bottom: 10px solid #800000;
+  margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+}
 .page-template-page-home .entry-content .intro {
   margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
 }
+.page-template-page-home .teams {
+  margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+}
+.page-template-page-home .alumni {
+  margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+}
+
 .page-template-page-home .team-cards,
 .page-template-page-teams .team-cards {
   row-gap: 32px;
@@ -9606,14 +9672,7 @@ footer#colophon .copyright {
   }
 }
 .single-cpt-team .roster-content .roster-nav a .img-wrap {
-  border: 3px solid #000;
-  border-radius: 100%;
   margin-bottom: 4px;
-  position: relative;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 75px;
-          flex: 0 0 75px;
-  width: 75px;
   -webkit-transition: border-color 0.25s ease;
   transition: border-color 0.25s ease;
 }
@@ -9711,30 +9770,46 @@ footer#colophon .copyright {
   position: static;
 }
 
-.page-template-page-alumni .post-grid > li {
-  margin-bottom: 32px;
+.page-template-page-alumni article > .entry-header {
+  padding-bottom: 2rem;
+}
+.page-template-page-alumni .post-grid {
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
 }
 @media print, screen and (min-width: 40em) {
-  .page-template-page-alumni .post-grid > li {
-    margin-bottom: 40px;
+  .page-template-page-alumni .post-grid {
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
   }
 }
-.page-template-page-alumni .post-grid > li a {
+.page-template-page-alumni .post-grid > li.cell {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+}
+@media print, screen and (min-width: 40em) {
+  .page-template-page-alumni .post-grid > li.cell {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+}
+.page-template-page-alumni .post-grid > li.cell a {
   display: block;
   background-color: #fff;
-  padding: 8px;
+  padding: 10px;
   -webkit-transition: color 0.25s ease;
   transition: color 0.25s ease;
 }
-.page-template-page-alumni .post-grid > li a:hover, .page-template-page-alumni .post-grid > li a:focus {
+.page-template-page-alumni .post-grid > li.cell a:hover, .page-template-page-alumni .post-grid > li.cell a:focus {
   color: #000;
 }
-.page-template-page-alumni .post-grid > li .photo-logo {
+.page-template-page-alumni .post-grid > li.cell .photo-logo {
   width: 100%;
   padding-top: 140%;
   margin-bottom: 1rem;
 }
-.page-template-page-alumni .post-grid > li .photo-logo img.img-fill {
+.page-template-page-alumni .post-grid > li.cell .photo-logo img.img-fill {
   position: absolute;
   top: 0;
   left: 0;
@@ -9745,7 +9820,7 @@ footer#colophon .copyright {
   -o-object-position: top;
      object-position: top;
 }
-.page-template-page-alumni .post-grid > li .photo-logo .logo {
+.page-template-page-alumni .post-grid > li.cell .photo-logo .logo {
   width: 30%;
   padding-top: 30%;
   position: absolute;
@@ -9754,8 +9829,8 @@ footer#colophon .copyright {
   background: #fff;
   border-radius: 100%;
 }
-.page-template-page-alumni .post-grid > li .photo-logo .logo img,
-.page-template-page-alumni .post-grid > li .photo-logo .logo svg {
+.page-template-page-alumni .post-grid > li.cell .photo-logo .logo img,
+.page-template-page-alumni .post-grid > li.cell .photo-logo .logo svg {
   position: absolute;
   top: 10px;
   left: 10px;

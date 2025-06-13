@@ -1,52 +1,66 @@
 .page-template-page-alumni {
-	.post-grid > li {
-		margin-bottom: $smallGutter;
+	article > .entry-header {
+		padding-bottom: 2rem;
+	}
+	.post-grid {
+		margin-right: -.5rem;
+		margin-left: -.5rem;
 		@include breakpoint(medium) {
-			margin-bottom: $mediumGutter;
+			margin-right: -.5rem;
+			margin-left: -.5rem;
 		}
-		a {
-			display: block;
-			background-color: $white;
-			padding: 8px;
-			transition: color .25s ease;
-			&:hover,
-			&:focus {
-				color: $black;
-			}
-		}
-		.inner {
-			
-		}
-		.photo-logo {
-			width: 100%;
-			padding-top: 140%;
+		> li.cell {
+			padding-right: .5rem;
+			padding-left: .5rem;
 			margin-bottom: 1rem;
-			img.img-fill {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: calc(100% + 1px);
-				object-fit: cover;
-				object-position: top;
+			@include breakpoint(medium) {
+				padding-right: .5rem;
+				padding-left: .5rem;
 			}
-			.logo {
-				width: 30%;
-				padding-top: 30%;
-				position: absolute;
-				bottom: 10px;
-				right: 10px;
-				background: $white;
-				border-radius: 100%;
-				img,
-				svg {
+			a {
+				display: block;
+				background-color: $white;
+				padding: 10px;
+				transition: color .25s ease;
+				&:hover,
+				&:focus {
+					color: $black;
+				}
+			}
+			.inner {
+				
+			}
+			.photo-logo {
+				width: 100%;
+				padding-top: 140%;
+				margin-bottom: 1rem;
+				img.img-fill {
 					position: absolute;
-					top: 10px;
-					left: 10px;
-					width: calc(100% - 20px);
-					height: calc(100% - 20px);
-					object-fit: contain;
-					object-position: center;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: calc(100% + 1px);
+					object-fit: cover;
+					object-position: top;
+				}
+				.logo {
+					width: 30%;
+					padding-top: 30%;
+					position: absolute;
+					bottom: 10px;
+					right: 10px;
+					background: $white;
+					border-radius: 100%;
+					img,
+					svg {
+						position: absolute;
+						top: 10px;
+						left: 10px;
+						width: calc(100% - 20px);
+						height: calc(100% - 20px);
+						object-fit: contain;
+						object-position: center;
+					}
 				}
 			}
 		}

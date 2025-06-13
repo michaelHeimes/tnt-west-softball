@@ -175,7 +175,7 @@ add_action( 'wp_enqueue_scripts', 'trailhead_scripts' );
  */
 wp_enqueue_style(
 	 'pmi-google-fonts',
-	 'https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Work+Sans:ital@0;1&display=swap',
+	 'https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&Work+Sans:ital@0;1&display=swap',
 	 array(),
 	 null
  );
