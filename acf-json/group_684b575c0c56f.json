@@ -1,6 +1,6 @@
 {
     "key": "group_684b575c0c56f",
-    "title": "CPT: Alumus",
+    "title": "CPT: Alumnus",
     "fields": [
         {
             "key": "field_684b575c17434",
@@ -136,6 +136,32 @@
             "append": ""
         },
         {
+            "key": "field_684c1214a3d65",
+            "label": "College Team Logo",
+            "name": "college_team_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
             "key": "field_684b59d199de6",
             "label": "URL for College Profile",
             "name": "url_for_college_profile",
@@ -174,5 +200,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1749769619
+    "modified": 1749815845
 }

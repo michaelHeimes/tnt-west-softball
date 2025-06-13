@@ -154,8 +154,8 @@ $header-styles: (
     'h2': ('font-size': 28),
     'h3': ('font-size': 21.7),
     'h4': ('font-size': 17.5),
-    'h5': ('font-size': 16),
-    'h6': ('font-size': 14),
+    'h5': ('font-size': 17),
+    'h6': ('font-size': 17),
   ),
   medium: (
     'h1': ('font-size': 70),
@@ -163,7 +163,7 @@ $header-styles: (
     'h3': ('font-size': 31),
     'h4': ('font-size': 25),
     'h5': ('font-size': 20),
-    'h6': ('font-size': 16),
+    'h6': ('font-size': 17),
   ),
 );
 $header-text-rendering: optimizeLegibility;
@@ -761,7 +761,7 @@ $reveal-max-width: $global-width;
 $reveal-padding: 0;
 $reveal-border: 0px solid get-color('primary');
 $reveal-radius: $global-radius;
-$reveal-zindex: 1005;
+$reveal-zindex: 99999;
 $reveal-overlay-background: rgba($black, 0.65);
 
 // 48. Slider

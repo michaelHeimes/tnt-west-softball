@@ -18,7 +18,7 @@
  //@*prepros-prepend vendor/foundation/js/plugins/foundation.util.imageLoader.min.js
  //@prepros-prepend vendor/foundation/js/plugins/foundation.util.keyboard.min.js
  //@prepros-prepend vendor/foundation/js/plugins/foundation.util.mediaQuery.min.js
- //@*prepros-prepend vendor/foundation/js/plugins/foundation.util.motion.min.js
+ //@prepros-prepend vendor/foundation/js/plugins/foundation.util.motion.min.js
  //@prepros-prepend vendor/foundation/js/plugins/foundation.util.nest.min.js
  //@*prepros-prepend vendor/foundation/js/plugins/foundation.util.timer.min.js
  //@prepros-prepend vendor/foundation/js/plugins/foundation.util.touch.min.js
@@ -188,6 +188,7 @@
             requestAnimationFrame(() => {
                 const swiper = new Swiper(rosterSlider, {
                     loop: true,
+                    effect: "fade",
                     autoHeight: true,
                     slidesPerView: 1,
                     spaceBetween: 30,

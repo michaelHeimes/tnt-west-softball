@@ -737,14 +737,14 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1;
   margin-top: 0;
   margin-bottom: 0.75rem;
 }
 
 h6, .h6 {
-  font-size: 0.875rem;
+  font-size: 1.0625rem;
   line-height: 1;
   margin-top: 0;
   margin-bottom: 0.75rem;
@@ -767,7 +767,7 @@ h6, .h6 {
     font-size: 1.25rem;
   }
   h6, .h6 {
-    font-size: 1rem;
+    font-size: 1.0625rem;
   }
 }
 a {
@@ -6753,7 +6753,7 @@ html.is-reveal-open body {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1005;
+  z-index: 99999;
   display: none;
   background-color: rgba(0, 0, 0, 0.65);
   overflow-y: auto;
@@ -6761,7 +6761,7 @@ html.is-reveal-open body {
 }
 
 .reveal {
-  z-index: 1006;
+  z-index: 100000;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   display: none;
@@ -9589,6 +9589,16 @@ footer#colophon .copyright {
   border-color: #800000;
 }
 
+.roster-modal {
+  opacity: 0;
+  -webkit-transition: opacity 2.5s ease 0s;
+  transition: opacity 2.5s ease 0s;
+}
+.roster-modal[aria-hidden=false] {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease 0.1s;
+  transition: opacity 0.25s ease 0.1s;
+}
 .roster-modal svg path {
   -webkit-transition: 0.25s ease;
   transition: 0.25s ease;
@@ -9627,6 +9637,9 @@ footer#colophon .copyright {
 .roster-modal .swiper-slide {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  background: #fff;
+  -webkit-transition-duration: 0.25 !important;
+          transition-duration: 0.25 !important;
 }
 
 .single-cpt-player .whole-team-link {
@@ -9638,5 +9651,57 @@ footer#colophon .copyright {
 }
 .single-cpt-player .roster-bio .left .img-wrap img {
   position: static;
+}
+
+.page-template-page-alumni .cpt-alumnus {
+  margin-bottom: 32px;
+}
+@media print, screen and (min-width: 40em) {
+  .page-template-page-alumni .cpt-alumnus {
+    margin-bottom: 40px;
+  }
+}
+.page-template-page-alumni .cpt-alumnus a {
+  -webkit-transition: color 0.25s ease;
+  transition: color 0.25s ease;
+}
+.page-template-page-alumni .cpt-alumnus a:hover, .page-template-page-alumni .cpt-alumnus a:focus {
+  color: #000;
+}
+.page-template-page-alumni .cpt-alumnus .photo-logo {
+  width: 100%;
+  padding-top: 140%;
+}
+.page-template-page-alumni .cpt-alumnus .photo-logo img.img-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+.page-template-page-alumni .cpt-alumnus .photo-logo .logo {
+  width: 30%;
+  padding-top: 30%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #fff;
+  border-radius: 100%;
+}
+.page-template-page-alumni .cpt-alumnus .photo-logo .logo img,
+.page-template-page-alumni .cpt-alumnus .photo-logo .logo svg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
 }
 /*# sourceMappingURL=style.min.css.map */

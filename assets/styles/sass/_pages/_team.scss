@@ -148,6 +148,12 @@
 	}
 }
 .roster-modal {
+	opacity: 0;
+	transition: opacity 2.5s ease 0s;
+	&[aria-hidden="false"] {
+		opacity: 1;
+		transition: opacity .25s ease .1s;
+	}
 	svg path {
 		transition: .25s ease;
 	}
@@ -186,5 +192,7 @@
 	}
 	.swiper-slide {
 		box-sizing: border-box;
+		background: $white;
+		transition-duration: .25 !important;
 	}
 }
