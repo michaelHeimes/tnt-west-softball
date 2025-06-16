@@ -36,12 +36,21 @@ button,
 	cursor: pointer;
 }
 
+.divider {
+	background: $white;
+	width: 100%;
+	height: 28px;
+	border-top: 10px solid $primary-color;
+	border-bottom: 10px solid $primary-color;
+}
+
 a.team-tab-link {
 	font-size: 1rem;
 	font-family: $header-font-family;
 	font-weight: 700;
 	text-decoration: underline;
 	text-underline-offset: 4px;
+	letter-spacing: .02em;
 	transition: text-underline-offset .25s ease;
 	&:hover,
 	&:focus {
@@ -89,12 +98,36 @@ a.team-tab-link {
 	}
 }
 
+.img-wrap {
+	&.border-top-right {
+		margin-top: 12px;
+		position: relative;
+		display: inline-block;
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: $white;
+			border: 6px solid $primary-color;
+			top: -12px;
+			right: -12px;
+		}
+		> img {
+			position: relative;
+			z-index: 1;
+			border: 6px solid $black;
+		}
+	}
+}
+
 /*********************
 POSTS & CONTENT STYLES
 *********************/
 body:not(.page-template-page-home) .site-main {
-	padding-top: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
-	padding-bottom: clamp(2.8rem, 2.377rem + 1.803vw, 4rem);
+	padding-top: clamp(4.2rem, 3.566rem + 2.704vw, 6rem);
+	padding-bottom: clamp(4.2rem, 3.566rem + 2.704vw, 6rem);
 }
 article > .entry-header {
 	padding-bottom: clamp(2.1rem, 1.783rem + 1.352vw, 3rem);

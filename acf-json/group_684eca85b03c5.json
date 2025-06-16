@@ -1,0 +1,46 @@
+{
+    "key": "group_684eca85b03c5",
+    "title": "GLOBAL: Team Pages - Nothing Found Message",
+    "fields": [
+        {
+            "key": "field_684eca85ff81b",
+            "label": "Nothing Found Message",
+            "name": "global_nothing_found_message",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "This is the message that appears on a team page where there isn't any roster, schedule, or staff information.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1749994606
+}

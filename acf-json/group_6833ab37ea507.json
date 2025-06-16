@@ -83,7 +83,7 @@
             "name": "photo",
             "aria-label": "",
             "type": "image",
-            "instructions": "",
+            "instructions": "Image Size: 844px wide, 1182px tall",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -229,5 +229,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1748287363
+    "modified": 1750009505
 }

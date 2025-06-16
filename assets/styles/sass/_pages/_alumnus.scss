@@ -3,20 +3,8 @@
 		padding-bottom: 2rem;
 	}
 	.post-grid {
-		margin-right: -.5rem;
-		margin-left: -.5rem;
-		@include breakpoint(medium) {
-			margin-right: -.5rem;
-			margin-left: -.5rem;
-		}
-		> li.cell {
-			padding-right: .5rem;
-			padding-left: .5rem;
-			margin-bottom: 1rem;
-			@include breakpoint(medium) {
-				padding-right: .5rem;
-				padding-left: .5rem;
-			}
+
+		> li {
 			a {
 				display: block;
 				background-color: $white;

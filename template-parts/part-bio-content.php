@@ -1,7 +1,7 @@
 <?php
 $post_id = get_the_ID();
 $post = get_post( $post_id );
-$link = get_permalink();
+
 $number = get_field('number') ?? null;
 $photo = get_field('photo') ?? null;
 $name = get_the_title(); 
@@ -20,6 +20,13 @@ $url_for_college_profile = get_field('url_for_college_profile') ?? null;
 if($team) {
 	$team_url = get_permalink($team->ID);
 }
+
+if( is_page_template('page-templates/page-alumni.php') ) {
+	$link = $url_for_college_profile;
+} else {
+	$link = get_permalink();
+}
+
 ?>
 <div class="roster-bio h-100">
 	<?php if( is_singular( 'cpt-player' ) && $team ):?>

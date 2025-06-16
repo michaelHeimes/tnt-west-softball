@@ -5,7 +5,6 @@ register_nav_menus(
 		'main-nav'		=> __( 'The Main Menu', 'trailhead' ),		// Main nav in header
 		'offcanvas-nav'	=> __( 'The Off-Canvas Menu', 'trailhead' ),	// Off-Canvas nav
 		'footer-links'	=> __( 'Footer Links', 'trailhead' ),		// Secondary nav in footer
-		'social-links'	=> __( 'Social Links', 'trailhead' ),		// Social Nav
 	)
 );
 
@@ -67,17 +66,6 @@ function trailhead_footer_links() {
 	));
 } /* End Footer Menu */
 
-// The Social Links Menu
-function trailhead_social_links() {
-	wp_nav_menu(array(
-		'container'			=> 'false',				// Remove nav container
-		'menu_id'			=> 'social-links',		// Adding custom nav id
-		'menu_class'		=> 'menu',				// Adding custom nav class
-		'theme_location'	=> 'social-links',		// Where it's located in the theme
-		'depth'				=> 0,					// Limit the depth of the nav
-		'fallback_cb'		=> ''					// Fallback function
-	));
-} /* End Social Links Menu */
 
 // Header Fallback Menu
 function trailhead_main_nav_fallback() {

@@ -1,41 +1,55 @@
 footer#colophon {
-
-	.site-info {
-
+	background-color: $black;
+	.top {
+		padding-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
 	}
-	
-	.left {
-		.bottom {
-			@include breakpoint(medium down) {
-				padding-bottom: 4.1rem;
-			}
+	.logo {
+		max-width: 200px;	
+	}
+	@include breakpoint(medium down) {
+		.menu {
+			justify-content: center;
 		}
+	}	
+	.nav-wrap {
+		justify-content: flex-end;
 	}
-		
 	ul#footer-links {
+		justify-content: flex-end;
 		@include breakpoint(medium down) {
-			padding-bottom: 4.08rem;
+			justify-content: center;
 		}
 		li {
 			a {
-				font-size: rem-calc(14);
-				line-height: rem-calc(19);
+				font-size: rem-calc(17);
 				font-weight: bold;
 				text-transform: uppercase;
+				color: $white;
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
 			}
 		}
 	}
-	
-	.copyright {
-		margin-bottom: 0;
+
+	.site-info {
+		background-color: $primary-color;
+		color: $white;
+		padding-top: 1em;
+		> div {
+			padding-bottom: 1rem;
+		}
+		a {
+			color: $white;
+		}
 		@include breakpoint(medium down) {
 			text-align: center;
-		}
-		@include breakpoint(tablet) {
-			br {
-				display: none;
+			.si-right {
+				text-align: center;
+				padding-top: .5rem;
 			}
-		}
+		}	
 	}
 	
 }

@@ -75,7 +75,7 @@ $foundation-palette: (
   "warning": #ffae00,
   "alert": #cc4b37,
 );
-$light-gray: #F9F9F9;
+$light-gray: #F8F8F8;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #000;
@@ -832,7 +832,7 @@ $tab-item-padding: 1.25rem 1.5rem;
 $tab-content-background: $white;
 $tab-content-border: $light-gray;
 $tab-content-color: $body-font-color;
-$tab-content-padding: 1rem 2rem 1.75rem 2.4rem;
+$tab-content-padding: 2.5rem 3rem 2.75rem 3.4rem;
 
 // 52. Thumbnail
 // -------------
@@ -887,7 +887,7 @@ $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
-  "small": 32px,
+  "small": 40px,
   "medium": 40px
 );
 $grid-padding-gutters: $grid-margin-gutters;

@@ -13,9 +13,10 @@
 		
 	<div class="entry-content">
         <div class="grid-container">
-            <div class="grid-x grid-padding-x">
-                <div class="cell small-12">
-		            <?php get_template_part('template-parts/loop-modules');?>
+            <div class="grid-x grid-padding-x align-center">
+                <div class="cell small-12 large-10">
+                    <h1><?php the_title();?></h1>
+		            <?php the_content();?>
                 </div>
             </div>
         </div>

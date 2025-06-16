@@ -6,6 +6,8 @@
  *
  * @package trailhead
  */
+$content = get_post_field( 'post_content', get_the_ID() );
+ 
 $fields = get_fields();
 
 $coach_coaches = $fields['coach_coaches'] ?? null;
@@ -16,6 +18,24 @@ $roster_title = $fields['roster_title'] ?? null;
 $roster = $fields['roster'] ?? null;
 $staff_title = $fields['staff_title'] ?? null;
 $staff = $fields['staff'] ?? null;
+
+$has_only_schedule = null;
+$has_only_staff = null;
+$has_schedule_no_roster = null;
+
+if( !$roster && !$staff ) {
+	$has_only_schedule = 'is-active';
+}
+
+if( !$roster && !$schedule ) {
+	$has_only_staff = ' is-active';
+}
+if( !$roster && $schedule ) {
+	$has_schedule_no_roster = ' is-active';
+}
+
+$global_nothing_found_message = get_field('global_nothing_found_message', 'option') ?? null;
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -26,14 +46,32 @@ $staff = $fields['staff'] ?? null;
 			<?php endif;?>
 		</h1>
 
-		<div class="grid-x grid-padding-x">
-			<div class="cell small-12 tablet-10 large-8">
-				<?php the_content();?>
+		<?php if ( ! empty( trim( wp_strip_all_tags( $content ) ) ) || $team_photo ):?>
+			<div class="grid-x grid-padding-x<?php if ( ! empty( trim( wp_strip_all_tags( $content ) ) ) ):?> tablet-flex-dir-row-reverse<?php endif;?>">
+				<?php if( $team_photo ) :?>
+					<div class="cell small-12 tablet-6 large-5">
+						<div class="img-wrap border-top-right">
+							<?=wp_get_attachment_image( $team_photo['id'], 'large' );?>
+						</div>
+					</div>
+				<?php endif;?>
+				<?php if ( ! empty( trim( wp_strip_all_tags( $content ) ) ) ):?>
+					<div class="content p-2 cell small-12<?php if( $team_photo ) { echo ' tablet-6 large-7'; } else { echo ' tablet-10 large-8'; };?>">
+						<?php the_content();?>
+					</div>
+				<?php endif;?>
 			</div>
-		</div>
+		<?php endif;?>
+		
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
+
+		<?php if( !$roster && !$staff && !$schedule && !empty($global_nothing_found_message) ):?>
+			<div class="nothing-found text-center p-2">
+				<?=wp_kses_post($global_nothing_found_message);?>
+			</div>
+		<?php endif;?>
 		
 		<div class="team-tabs-wapper">
 			<ul class="accordion" data-responsive-accordion-tabs="accordion medium-tabs" data-multi-expand="true" data-allow-all-closed="true" data-deep-link="true">
@@ -128,7 +166,7 @@ $staff = $fields['staff'] ?? null;
 					</li>
 				<?php endif;?>
 				<?php if( $schedule_title || $schedule ):?>
-					<li class="schedule-item accordion-item" data-accordion-item>
+					<li class="schedule-item accordion-item<?=$has_only_schedule;?><?=$has_schedule_no_roster;?>" data-accordion-item>
 						<a href="#schedule" class="accordion-title team-tab-link">Schedule</a>
 						<div id="schedule" class="schedule-content accordion-content" data-tab-content>
 							<?php if( have_rows('schedule') ): ?>

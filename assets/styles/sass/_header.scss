@@ -24,6 +24,7 @@ header.site-header {
 		a {
 			font-family: $header-font-family;
 			font-size: rem-calc(22);
+			letter-spacing: .02em;
 			color: $white;
 		}
 		
@@ -54,9 +55,7 @@ header.site-header {
 				margin: 0 .3rem 0rem;
 				
 				> a {
-					
-
-					
+					text-transform: uppercase;
 				}
 				
 			&.is-active,
@@ -165,12 +164,14 @@ header.site-header {
 }
 
 .off-canvas {
+	border-left: 8px solid $black;
 	#offcanvas-nav {
 		padding: 1.2rem 0 1.4rem;
 		li {
 			a {
 				font-family: $header-font-family;
 				font-size: rem-calc(24);
+				letter-spacing: .02em;
 				margin: 0;
 				font-weight: 600;
 				color: get-color('primary');

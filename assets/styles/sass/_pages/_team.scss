@@ -5,6 +5,12 @@
 		@include breakpoint(medium) {
 			row-gap: $mediumGutter;
 		}
+		@include breakpoint(medium down) {
+			article {
+				max-width: 500px;
+				margin: auto;
+			}
+		}
 	}
 	.cpt-team {
 		a[rel="bookmark"] {
@@ -12,7 +18,7 @@
 			background-color: $white;
 			transition: background-color .25s ease;
 			h2 {
-				padding: .2em .2em .1em;
+				padding: .4em .4em .25em;
 				transition: color .25s ease;
 			}
 			&:hover,
@@ -25,8 +31,7 @@
 		}
 		.team-tab-nav {
 			background: get-color('primary');
-			padding-top: 2px;
-			padding-bottom: 2px;
+			padding: 2px 4px;
 			a {
 				color: $white;
 				display: inline-block;
@@ -37,6 +42,20 @@
 }
 
 .single-cpt-team {
+	.entry-header {
+		h1 {
+			margin-bottom: clamp(1.4rem, 1.189rem + 0.901vw, 2rem);
+		}
+		@include breakpoint(tablet down) {
+			.img-wrap {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+	.nothing-found {
+		background-color: $white;
+		padding: 3rem;
+	}
 	.tabs {
 		display: inline-block;
 		border: 0;
@@ -79,6 +98,7 @@
 				font-family: $header-font-family;
 				font-weight: 700;
 				font-size: rem-calc(15);
+				letter-spacing: .02em;
 				line-height: 1;
 				flex-direction: column;
 				align-items: flex-start;

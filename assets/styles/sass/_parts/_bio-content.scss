@@ -84,6 +84,7 @@
 		}
 		.number {
 			font-family: $header-font-family;
+			letter-spacing: .02em;
 			width: clamp(2.5rem, 2.06rem + 1.878vw, 3.75rem);
 			height: clamp(2.5rem, 2.06rem + 1.878vw, 3.75rem);
 			font-size: clamp(1.125rem, 0.993rem + 0.563vw, 1.5rem);

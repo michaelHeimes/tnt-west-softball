@@ -4,7 +4,8 @@
  *
  * For more info: https://jointswp.com/docs/off-canvas-menu/
  */
- $logo = get_field('header_logo', 'option');
+ 
+$logo = get_field('header_logo', 'option');
 
 ?>
 
