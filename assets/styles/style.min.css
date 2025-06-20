@@ -8716,12 +8716,12 @@ a.team-tab-link:hover, a.team-tab-link:focus {
      object-position: top;
 }
 
-.img-wrap.border-top-right {
+.img-wrap.border-top-right, .img-wrap.border-top-left {
   margin-top: 12px;
   position: relative;
   display: inline-block;
 }
-.img-wrap.border-top-right:before {
+.img-wrap.border-top-right:before, .img-wrap.border-top-left:before {
   content: "";
   position: absolute;
   display: block;
@@ -8732,10 +8732,14 @@ a.team-tab-link:hover, a.team-tab-link:focus {
   top: -12px;
   right: -12px;
 }
-.img-wrap.border-top-right > img {
+.img-wrap.border-top-right > img, .img-wrap.border-top-left > img {
   position: relative;
   z-index: 1;
   border: 6px solid #000;
+}
+.img-wrap.border-top-left:before {
+  right: auto;
+  left: -12px;
 }
 
 /*********************
@@ -9637,7 +9641,7 @@ footer#colophon .site-info a {
   }
 }
 .page-template-page-home .entry-header .left-svg svg {
-  padding: 1vw;
+  padding: 0.5vw;
 }
 @media print, screen and (max-width: 63.99875em) {
   .page-template-page-home .entry-header .right-svg {
@@ -9660,6 +9664,12 @@ footer#colophon .site-info a {
   .page-template-page-home .entry-content .intro .img-wrap {
     margin-bottom: 2rem;
   }
+}
+.page-template-page-home .tryouts {
+  margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+}
+.page-template-page-home .tryouts .cta {
+  padding-top: 2rem;
 }
 .page-template-page-home .teams {
   margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);

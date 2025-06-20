@@ -12,6 +12,11 @@ $fields = get_fields();
 
 $coach_coaches = $fields['coach_coaches'] ?? null;
 $team_photo = $fields['team_photo'] ?? null;
+$global_teams_fallback_image = get_field('global_teams_fallback_image', 'option') ?? null;
+if( empty( $team_photo && $global_teams_fallback_image ) ) {
+	$team_photo = $global_teams_fallback_image;
+}
+
 $schedule_title = $fields['schedule_title'] ?? null;
 $schedule = $fields['schedule'] ?? null;
 $roster_title = $fields['roster_title'] ?? null;
@@ -51,7 +56,7 @@ $global_nothing_found_message = get_field('global_nothing_found_message', 'optio
 				<?php if( $team_photo ) :?>
 					<div class="cell small-12 tablet-6 large-5">
 						<div class="img-wrap border-top-right">
-							<?=wp_get_attachment_image( $team_photo['id'], 'large' );?>
+							<?=wp_get_attachment_image( $team_photo['id'], 'team-photo' );?>
 						</div>
 					</div>
 				<?php endif;?>

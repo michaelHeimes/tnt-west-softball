@@ -1,4 +1,7 @@
-<?php			
+<?php		
+
+$global_teams_fallback_image = get_field('global_teams_fallback_image', 'option') ?? null;
+	
 $args = array(  
 	'post_type' => 'cpt-team',
 	'post_status' => 'publish',
@@ -17,6 +20,11 @@ if ( $loop->have_posts() ) : ?>
 				<?php while ( $loop->have_posts() ) : $loop->the_post();
 					$url = get_the_permalink();
 					$team_photo = get_field('team_photo') ?? null;
+					
+					if( empty( $team_photo && $global_teams_fallback_image ) ) {
+						$team_photo = $global_teams_fallback_image;
+					}
+					
 					$name = get_the_title();	
 				?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class('cell small-12 tablet-6 large-4'); ?>>
@@ -26,7 +34,7 @@ if ( $loop->have_posts() ) : ?>
 							</h2>
 							<div class="image">
 								<?php if( $team_photo ) :?>
-									<?=wp_get_attachment_image( $team_photo['id'], 'large' );?>
+									<?=wp_get_attachment_image( $team_photo['id'], 'team-photo' );?>
 								<?php endif;?>
 							</div>
 						</a>

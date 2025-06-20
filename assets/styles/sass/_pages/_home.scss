@@ -7,7 +7,7 @@
 				padding-bottom: .5rem;
 			}
 			svg {
-				padding: 1vw;
+				padding: .5vw;
 			}
 		}
 		.right-svg {
@@ -35,6 +35,12 @@
 			}
 		}
 	}	
+	.tryouts {
+		margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+		.cta {
+			padding-top: 2rem;
+		}
+	}
 	.teams {
 		margin-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
 	}

@@ -99,7 +99,8 @@ a.team-tab-link {
 }
 
 .img-wrap {
-	&.border-top-right {
+	&.border-top-right,
+	&.border-top-left {
 		margin-top: 12px;
 		position: relative;
 		display: inline-block;
@@ -118,6 +119,12 @@ a.team-tab-link {
 			position: relative;
 			z-index: 1;
 			border: 6px solid $black;
+		}
+	}
+	&.border-top-left {
+		&:before {
+			right: auto;
+			left: -12px;
 		}
 	}
 }

@@ -29,7 +29,7 @@
             "name": "team_photo",
             "aria-label": "",
             "type": "image",
-            "instructions": "Image Size: 920px wide",
+            "instructions": "Image Size: 880px by 629px",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -309,5 +309,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1750009330
+    "modified": 1750422075
 }
