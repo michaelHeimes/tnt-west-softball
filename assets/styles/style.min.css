@@ -9455,6 +9455,24 @@ header.site-header #top-bar-menu .menu-toggle-wrap a#menu-toggle.clicked span:nt
   padding-left: 2.75rem;
 }
 
+.contact-cta {
+  padding-top: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+  padding-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+}
+.contact-cta a {
+  color: #800000;
+  font-family: "Rajdhani", Helvetica, Roboto, Arial, sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  letter-spacing: 0.02em;
+  -webkit-transition: text-underline-offset 0.25s ease;
+  transition: text-underline-offset 0.25s ease;
+}
+.contact-cta a:hover, .contact-cta a:focus {
+  color: #800000;
+  text-underline-offset: 0.02em;
+}
+
 footer#colophon {
   background-color: #000;
 }

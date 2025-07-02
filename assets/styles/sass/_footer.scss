@@ -1,3 +1,21 @@
+.contact-cta {		
+	padding-top: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+	padding-bottom: clamp(4.375rem, 3.715rem + 2.817vw, 6.25rem);
+	a {
+		color: get-color('primary');
+		font-family: $header-font-family;
+		text-decoration: underline;
+		text-underline-offset: 4px;
+		letter-spacing: .02em;
+		transition: text-underline-offset .25s ease;
+		&:hover,
+		&:focus {
+			color: get-color('primary');
+			text-underline-offset: 0.02em;
+		}
+	}
+}
+
 footer#colophon {
 	background-color: $black;
 	.top {

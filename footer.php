@@ -9,11 +9,24 @@
  * @package trailhead
  */
 
-$logo = get_field('header_logo', 'option');
-$copyright_text = get_field('copyright_text', 'option');
-
+$logo = get_field('header_logo', 'option') ?? null;
+$copyright_text = get_field('copyright_text', 'option') ?? null;
+$global_contact_message = get_field('global_contact_message', 'option') ?? null;
 
 ?>
+				<?php if( $global_contact_message ):?>
+					<div id="contact-us" class="contact-cta">
+						<div class="grid-container">
+							<div class="grid-x grid-padding-x align-center">
+								<div class="small-11 medium-9 tablet-9 large-7 xlarge-6">
+									<div class="inner">
+										<?=wp_kses_post($global_contact_message);?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php endif;?>
 
 				<footer id="colophon" class="site-footer">
 					<div class="divider"></div>
